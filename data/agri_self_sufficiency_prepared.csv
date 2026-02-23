@@ -1,0 +1,577 @@
+country,product,year,production_tonnes,imports_tonnes,self_sufficiency_rate
+Norway,"Meat of chickens, fresh or chilled",1961,2477.0,39.0,0.9844992050874404
+Norway,"Meat of chickens, fresh or chilled",1962,2648.0,45.0,0.9832900111399926
+Norway,"Meat of chickens, fresh or chilled",1963,2465.0,59.0,0.9766244057052298
+Norway,"Meat of chickens, fresh or chilled",1964,2535.0,124.0,0.9533659270402407
+Norway,"Meat of chickens, fresh or chilled",1965,3222.0,120.0,0.9640933572710951
+Norway,"Meat of chickens, fresh or chilled",1966,3377.0,142.0,0.9596476271668087
+Norway,"Meat of chickens, fresh or chilled",1967,3905.0,180.0,0.95593635250918
+Norway,"Meat of chickens, fresh or chilled",1968,4726.0,197.0,0.9599837497460898
+Norway,"Meat of chickens, fresh or chilled",1969,5332.0,193.0,0.9650678733031675
+Norway,"Meat of chickens, fresh or chilled",1970,6187.0,246.0,0.9617596766671849
+Norway,"Meat of chickens, fresh or chilled",1971,7149.0,275.0,0.962957974137931
+Norway,"Meat of chickens, fresh or chilled",1972,7401.0,285.0,0.962919594067135
+Norway,"Meat of chickens, fresh or chilled",1973,8146.0,232.0,0.9723084268321796
+Norway,"Meat of chickens, fresh or chilled",1974,9323.0,186.0,0.980439583552424
+Norway,"Meat of chickens, fresh or chilled",1975,8385.0,219.0,0.9745467224546722
+Norway,"Meat of chickens, fresh or chilled",1976,7839.0,263.0,0.9675388792890645
+Norway,"Meat of chickens, fresh or chilled",1977,8759.0,1481.0,0.85537109375
+Norway,"Meat of chickens, fresh or chilled",1978,10252.0,692.0,0.9367690058479532
+Norway,"Meat of chickens, fresh or chilled",1979,11017.0,252.0,0.9776377673262934
+Norway,"Meat of chickens, fresh or chilled",1980,12168.0,211.0,0.9829550044430083
+Norway,"Meat of chickens, fresh or chilled",1981,11969.0,226.0,0.9814678146781468
+Norway,"Meat of chickens, fresh or chilled",1982,9904.0,239.0,0.9764369515922311
+Norway,"Meat of chickens, fresh or chilled",1983,10655.0,253.0,0.9768060139347268
+Norway,"Meat of chickens, fresh or chilled",1984,10875.0,266.0,0.9761242258325106
+Norway,"Meat of chickens, fresh or chilled",1985,12146.0,441.0,0.9649638515929133
+Norway,"Meat of chickens, fresh or chilled",1986,13241.0,1459.0,0.9007482993197279
+Norway,"Meat of chickens, fresh or chilled",1987,14605.0,1532.0,0.9050628989279296
+Norway,"Meat of chickens, fresh or chilled",1988,17744.0,501.0,0.9725404220334338
+Norway,"Meat of chickens, fresh or chilled",1989,19803.0,205.0,0.9897540983606558
+Norway,"Meat of chickens, fresh or chilled",1990,19816.0,229.0,0.9885757046645048
+Norway,"Meat of chickens, fresh or chilled",1991,18308.0,231.0,0.9875397810022115
+Norway,"Meat of chickens, fresh or chilled",1992,20520.0,269.0,0.9870604646688153
+Norway,"Meat of chickens, fresh or chilled",1993,19418.0,246.0,0.9874898291293734
+Norway,"Meat of chickens, fresh or chilled",1994,22356.0,543.0,0.9762871741124066
+Norway,"Meat of chickens, fresh or chilled",1995,24428.0,1067.0,0.9581486565993332
+Norway,"Meat of chickens, fresh or chilled",1996,27552.0,114.0,0.9958794187811755
+Norway,"Meat of chickens, fresh or chilled",1997,29370.0,103.0,0.9965052760153361
+Norway,"Meat of chickens, fresh or chilled",1998,27565.0,85.0,0.9969258589511754
+Norway,"Meat of chickens, fresh or chilled",1999,32059.0,73.0,0.9977281214988174
+Norway,"Meat of chickens, fresh or chilled",2000,38114.0,89.22,0.9976645947645251
+Norway,"Meat of chickens, fresh or chilled",2001,37324.0,47.0,0.9987423403173584
+Norway,"Meat of chickens, fresh or chilled",2002,40605.0,46.0,0.9988684165211188
+Norway,"Meat of chickens, fresh or chilled",2003,43009.0,58.0,0.9986532611976687
+Norway,"Meat of chickens, fresh or chilled",2004,47280.0,66.0,0.9986060068432391
+Norway,"Meat of chickens, fresh or chilled",2005,49905.0,252.0,0.9949757760631617
+Norway,"Meat of chickens, fresh or chilled",2006,55345.0,258.0,0.9953599625919465
+Norway,"Meat of chickens, fresh or chilled",2007,62563.0,139.0,0.9977831648113298
+Norway,"Meat of chickens, fresh or chilled",2008,74848.0,212.0,0.9971755928590461
+Norway,"Meat of chickens, fresh or chilled",2009,71229.0,579.0,0.9919368315508021
+Norway,"Meat of chickens, fresh or chilled",2010,75879.0,52.0,0.9993151677180598
+Norway,"Meat of chickens, fresh or chilled",2011,75172.0,45.0,0.9994017309916641
+Norway,"Meat of chickens, fresh or chilled",2012,81051.0,1401.0,0.9830082957357008
+Norway,"Meat of chickens, fresh or chilled",2013,93580.0,1009.0,0.9893327976826058
+Norway,"Meat of chickens, fresh or chilled",2014,94759.0,289.86,0.996950410557265
+Norway,"Meat of chickens, fresh or chilled",2015,80869.0,612.21,0.9924864886027097
+Norway,"Meat of chickens, fresh or chilled",2016,87281.0,709.52,0.9919364040580735
+Norway,"Meat of chickens, fresh or chilled",2017,90944.0,525.81,0.9942515459472366
+Norway,"Meat of chickens, fresh or chilled",2018,89925.0,550.14,0.9939194346645941
+Norway,"Meat of chickens, fresh or chilled",2019,98553.0,767.27,0.9922747894261664
+Norway,"Meat of chickens, fresh or chilled",2020,98153.0,962.97,0.9902844112810478
+Norway,"Meat of chickens, fresh or chilled",2021,106043.0,1108.94,0.9896507706720009
+Norway,"Meat of chickens, fresh or chilled",2022,105614.0,967.48,0.9909226255818554
+Norway,"Meat of chickens, fresh or chilled",2023,107624.0,701.48,0.9935243305637788
+Norway,"Meat of chickens, fresh or chilled",2024,110833.0,656.69,0.9941098589474955
+Norway,Raw milk of cattle,1961,1603000.0,0.0,1.0
+Norway,Raw milk of cattle,1962,1641000.0,0.0,1.0
+Norway,Raw milk of cattle,1963,1656000.0,0.0,1.0
+Norway,Raw milk of cattle,1964,1642000.0,0.0,1.0
+Norway,Raw milk of cattle,1965,1643000.0,0.0,1.0
+Norway,Raw milk of cattle,1966,1677000.0,0.0,1.0
+Norway,Raw milk of cattle,1967,1695000.0,0.0,1.0
+Norway,Raw milk of cattle,1968,1760000.0,0.0,1.0
+Norway,Raw milk of cattle,1969,1731000.0,0.0,1.0
+Norway,Raw milk of cattle,1970,1704000.0,0.0,1.0
+Norway,Raw milk of cattle,1971,1744000.0,0.0,1.0
+Norway,Raw milk of cattle,1972,1807000.0,0.0,1.0
+Norway,Raw milk of cattle,1973,1800000.0,0.0,1.0
+Norway,Raw milk of cattle,1974,1800000.0,0.0,1.0
+Norway,Raw milk of cattle,1975,1820000.0,0.0,1.0
+Norway,Raw milk of cattle,1976,1874000.0,0.0,1.0
+Norway,Raw milk of cattle,1977,1868000.0,0.0,1.0
+Norway,Raw milk of cattle,1978,1901600.0,0.0,1.0
+Norway,Raw milk of cattle,1979,1872200.0,0.0,1.0
+Norway,Raw milk of cattle,1980,1944300.0,0.0,1.0
+Norway,Raw milk of cattle,1981,1962900.0,0.0,1.0
+Norway,Raw milk of cattle,1982,2019000.0,0.0,1.0
+Norway,Raw milk of cattle,1983,1996000.0,0.0,1.0
+Norway,Raw milk of cattle,1984,1993000.0,6.0,0.9999969894721842
+Norway,Raw milk of cattle,1985,1952000.0,3.0,0.9999984631171162
+Norway,Raw milk of cattle,1986,1955000.0,3.0,0.9999984654755005
+Norway,Raw milk of cattle,1987,1986000.0,0.0,1.0
+Norway,Raw milk of cattle,1988,1985571.0,2.0,0.9999989927340873
+Norway,Raw milk of cattle,1989,1961000.0,7.0,0.9999964304053989
+Norway,Raw milk of cattle,1990,1963000.0,17.0,0.9999913398610404
+Norway,Raw milk of cattle,1991,1867293.0,15.0,0.9999919670456079
+Norway,Raw milk of cattle,1992,1858221.0,43.0,0.9999768601232117
+Norway,Raw milk of cattle,1993,1852745.0,54.0,0.9999708549065495
+Norway,Raw milk of cattle,1994,1806777.0,67.0,0.9999629187688589
+Norway,Raw milk of cattle,1995,1777383.0,96.0,0.9999459909230995
+Norway,Raw milk of cattle,1996,1753218.0,114.0,0.999934980939149
+Norway,Raw milk of cattle,1997,1747479.0,37.0,0.999978827089423
+Norway,Raw milk of cattle,1998,1734089.0,8.0,0.9999953866479211
+Norway,Raw milk of cattle,1999,1707998.0,2.0,0.9999988290398126
+Norway,Raw milk of cattle,2000,1616445.0,9.56,0.999994085821998
+Norway,Raw milk of cattle,2001,1572427.0,23.0,0.9999853731438202
+Norway,Raw milk of cattle,2002,1558333.0,33.0,0.9999788239733156
+Norway,Raw milk of cattle,2003,1575802.0,34.0,0.9999784241507365
+Norway,Raw milk of cattle,2004,1573977.0,22.0,0.9999860228627845
+Norway,Raw milk of cattle,2005,1565717.0,77.0,0.9999508236715685
+Norway,Raw milk of cattle,2006,1553437.0,126.0,0.9999188961117123
+Norway,Raw milk of cattle,2007,1595307.0,145.0,0.9999091166641177
+Norway,Raw milk of cattle,2008,1580638.0,90.0,0.9999430642083901
+Norway,Raw milk of cattle,2009,1554291.0,26.0,0.9999832723955281
+Norway,Raw milk of cattle,2010,1558520.0,26.0,0.9999833177846531
+Norway,Raw milk of cattle,2011,1527543.0,37.0,0.9999757786826222
+Norway,Raw milk of cattle,2012,1584408.0,55.0,0.9999652879240475
+Norway,Raw milk of cattle,2013,1577832.0,35.0,0.9999778181557761
+Norway,Raw milk of cattle,2014,1561868.0,65.91,0.9999578023118789
+Norway,Raw milk of cattle,2015,1586580.0,42.33,0.9999733206830639
+Norway,Raw milk of cattle,2016,1572750.0,59.68,0.9999620551674123
+Norway,Raw milk of cattle,2017,1544074.0,67.98,0.9999559755509011
+Norway,Raw milk of cattle,2018,1571897.0,69.64,0.9999556988054149
+Norway,Raw milk of cattle,2019,1529780.0,78.27,0.9999488383979517
+Norway,Raw milk of cattle,2020,1547025.0,71.41,0.9999538425662821
+Norway,Raw milk of cattle,2021,1572450.0,48.94,0.9999688775624866
+Norway,Raw milk of cattle,2022,1453400.0,79.33,0.9999454206204638
+Norway,Raw milk of cattle,2023,1390600.0,25.68,0.999981533492176
+Norway,Raw milk of cattle,2024,1467500.0,28.67,0.9999804637547559
+Norway,Wheat,1961,27400.0,325200.0,0.07770845150311968
+Norway,Wheat,1962,20000.0,358400.0,0.052854122621564484
+Norway,Wheat,1963,17700.0,312900.0,0.05353901996370236
+Norway,Wheat,1964,20200.0,356200.0,0.0536663124335813
+Norway,Wheat,1965,11800.0,361100.0,0.03164387235183695
+Norway,Wheat,1966,4145.0,385703.0,0.010632349018078842
+Norway,Wheat,1967,10583.0,374161.0,0.027506601792360634
+Norway,Wheat,1968,16365.0,316178.0,0.049211680895403
+Norway,Wheat,1969,11111.0,330668.0,0.032509311572682935
+Norway,Wheat,1970,11601.0,420440.0,0.026851618249193944
+Norway,Wheat,1971,10431.0,358715.0,0.028257112362046453
+Norway,Wheat,1972,11596.0,413703.0,0.027265523784443416
+Norway,Wheat,1973,19833.0,381204.0,0.04945428975381324
+Norway,Wheat,1974,62095.0,276336.0,0.18347905481471852
+Norway,Wheat,1975,51819.0,266681.0,0.16269701726844585
+Norway,Wheat,1976,65268.0,302859.0,0.1772975087401902
+Norway,Wheat,1977,77998.0,304646.0,0.20383960025506737
+Norway,Wheat,1978,79806.0,326626.0,0.19635757027005749
+Norway,Wheat,1979,67001.0,341972.0,0.1638274409313084
+Norway,Wheat,1980,65000.0,316894.0,0.1702042975275862
+Norway,Wheat,1981,57700.0,432109.0,0.11780102039774688
+Norway,Wheat,1982,75500.0,376797.0,0.16692571474053552
+Norway,Wheat,1983,96800.0,237754.0,0.2893404353258368
+Norway,Wheat,1984,170400.0,237794.0,0.41744856612297093
+Norway,Wheat,1985,169900.0,180022.0,0.4855367767673939
+Norway,Wheat,1986,158500.0,304053.0,0.34266343532524923
+Norway,Wheat,1987,249000.0,250858.0,0.49814147217809857
+Norway,Wheat,1988,148300.0,282842.0,0.3439702000732937
+Norway,Wheat,1989,139600.0,291770.0,0.323620094118738
+Norway,Wheat,1990,223606.0,203507.0,0.5235289021874773
+Norway,Wheat,1991,246300.0,153864.0,0.6154976459651543
+Norway,Wheat,1992,192500.0,280749.0,0.40676261333885544
+Norway,Wheat,1993,360300.0,206227.0,0.6359802798454443
+Norway,Wheat,1994,195100.0,374715.0,0.34239182892693243
+Norway,Wheat,1995,312200.0,125536.0,0.7132152713050789
+Norway,Wheat,1996,266300.0,227836.0,0.5389204591448508
+Norway,Wheat,1997,255500.0,213088.0,0.5452551068315876
+Norway,Wheat,1998,323400.0,168027.0,0.6580834996856094
+Norway,Wheat,1999,229700.0,357467.0,0.39120045915386936
+Norway,Wheat,2000,313400.0,204216.6,0.6054674444366738
+Norway,Wheat,2001,259100.0,249349.0,0.5095889656583059
+Norway,Wheat,2002,261500.0,314146.0,0.4542722437053328
+Norway,Wheat,2003,349500.0,305244.0,0.5337964150874235
+Norway,Wheat,2004,406800.0,217871.0,0.6512228036838592
+Norway,Wheat,2005,395400.0,155973.0,0.7171189013607848
+Norway,Wheat,2006,357000.0,227427.0,0.6108547346375167
+Norway,Wheat,2007,401100.0,278440.0,0.5902522294493334
+Norway,Wheat,2008,453300.0,302394.0,0.5998459694003129
+Norway,Wheat,2009,278000.0,303171.0,0.47834458360792265
+Norway,Wheat,2010,331400.0,384093.0,0.46317713800135013
+Norway,Wheat,2011,284600.0,409500.0,0.41002737357729435
+Norway,Wheat,2012,274700.0,449199.0,0.37947282701039786
+Norway,Wheat,2013,213000.0,494337.0,0.3011294474910827
+Norway,Wheat,2014,389600.0,488949.91,0.44345801594812073
+Norway,Wheat,2015,495200.0,357842.47,0.5805103701343264
+Norway,Wheat,2016,309400.0,321021.21,0.49078297984295294
+Norway,Wheat,2017,400500.0,302459.9,0.5697337785555051
+Norway,Wheat,2018,137700.0,434829.48,0.2405116326935689
+Norway,Wheat,2019,450100.0,407122.98,0.525067585099037
+Norway,Wheat,2020,322500.0,278961.42,0.536193992292972
+Norway,Wheat,2021,264900.0,325154.41,0.448941649296376
+Norway,Wheat,2022,384000.0,293356.04,0.5669101289773691
+Norway,Wheat,2023,172000.0,281702.03,0.37910343932117735
+Norway,Wheat,2024,230000.0,447304.93,0.33958116914932246
+Switzerland,"Meat of chickens, fresh or chilled",1961,5250.0,18436.0,0.22164991978383855
+Switzerland,"Meat of chickens, fresh or chilled",1962,5800.0,21452.0,0.21282841626302657
+Switzerland,"Meat of chickens, fresh or chilled",1963,8400.0,22385.0,0.2728601591684262
+Switzerland,"Meat of chickens, fresh or chilled",1964,10500.0,22243.0,0.3206792291482149
+Switzerland,"Meat of chickens, fresh or chilled",1965,12400.0,20875.0,0.37265214124718254
+Switzerland,"Meat of chickens, fresh or chilled",1966,13500.0,22227.0,0.3778654798891595
+Switzerland,"Meat of chickens, fresh or chilled",1967,14500.0,21278.0,0.4052769858572307
+Switzerland,"Meat of chickens, fresh or chilled",1968,15000.0,22221.0,0.4029983074071089
+Switzerland,"Meat of chickens, fresh or chilled",1969,15500.0,24204.0,0.39038887769494257
+Switzerland,"Meat of chickens, fresh or chilled",1970,16200.0,24916.0,0.3940071991438856
+Switzerland,"Meat of chickens, fresh or chilled",1971,17500.0,23761.0,0.42412932308960033
+Switzerland,"Meat of chickens, fresh or chilled",1972,19360.0,25573.0,0.43086373044310416
+Switzerland,"Meat of chickens, fresh or chilled",1973,20460.0,28134.0,0.4210396345227806
+Switzerland,"Meat of chickens, fresh or chilled",1974,21120.0,23586.0,0.47241980942155415
+Switzerland,"Meat of chickens, fresh or chilled",1975,19360.0,21835.0,0.4699599465954606
+Switzerland,"Meat of chickens, fresh or chilled",1976,20900.0,24087.0,0.46457865605619403
+Switzerland,"Meat of chickens, fresh or chilled",1977,21670.0,22582.0,0.4896953809997288
+Switzerland,"Meat of chickens, fresh or chilled",1978,21780.0,22007.0,0.49740790645625416
+Switzerland,"Meat of chickens, fresh or chilled",1979,23100.0,25512.0,0.4751913107874599
+Switzerland,"Meat of chickens, fresh or chilled",1980,23000.0,27937.0,0.4515381746078489
+Switzerland,"Meat of chickens, fresh or chilled",1981,24300.0,27764.0,0.46673325138291333
+Switzerland,"Meat of chickens, fresh or chilled",1982,24400.0,27004.0,0.47467123181075405
+Switzerland,"Meat of chickens, fresh or chilled",1983,24500.0,29076.0,0.4572943108854711
+Switzerland,"Meat of chickens, fresh or chilled",1984,25630.0,31357.0,0.44975169775562845
+Switzerland,"Meat of chickens, fresh or chilled",1985,27500.0,32376.0,0.4592825172022179
+Switzerland,"Meat of chickens, fresh or chilled",1986,27500.0,35511.0,0.4364317341416578
+Switzerland,"Meat of chickens, fresh or chilled",1987,28710.0,39846.0,0.41878172588832485
+Switzerland,"Meat of chickens, fresh or chilled",1988,31370.0,42854.0,0.4226395774951498
+Switzerland,"Meat of chickens, fresh or chilled",1989,32460.0,41006.0,0.4418370402635233
+Switzerland,"Meat of chickens, fresh or chilled",1990,31277.0,37092.0,0.4574734163144115
+Switzerland,"Meat of chickens, fresh or chilled",1991,32639.0,38720.0,0.457391499320338
+Switzerland,"Meat of chickens, fresh or chilled",1992,33666.0,35389.0,0.4875244370429368
+Switzerland,"Meat of chickens, fresh or chilled",1993,33076.0,35428.0,0.48283311923391337
+Switzerland,"Meat of chickens, fresh or chilled",1994,34976.0,37386.0,0.48334761338824245
+Switzerland,"Meat of chickens, fresh or chilled",1995,36619.0,27603.0,0.5701940145121609
+Switzerland,"Meat of chickens, fresh or chilled",1996,37319.0,28721.0,0.5650969109630527
+Switzerland,"Meat of chickens, fresh or chilled",1997,40774.0,25800.0,0.6124613212365188
+Switzerland,"Meat of chickens, fresh or chilled",1998,40302.0,24685.0,0.6201548001908074
+Switzerland,"Meat of chickens, fresh or chilled",1999,42052.0,23341.0,0.6430657715657639
+Switzerland,"Meat of chickens, fresh or chilled",2000,45890.0,23043.57,0.6657133817383896
+Switzerland,"Meat of chickens, fresh or chilled",2001,46834.0,26780.0,0.6362105034368463
+Switzerland,"Meat of chickens, fresh or chilled",2002,51068.0,26350.0,0.6596398770311814
+Switzerland,"Meat of chickens, fresh or chilled",2003,53144.0,30371.0,0.6363407771059091
+Switzerland,"Meat of chickens, fresh or chilled",2004,56317.0,27822.0,0.6693328896231237
+Switzerland,"Meat of chickens, fresh or chilled",2005,54452.0,27490.0,0.6645188059847209
+Switzerland,"Meat of chickens, fresh or chilled",2006,48333.0,28454.0,0.6294424837537604
+Switzerland,"Meat of chickens, fresh or chilled",2007,58390.0,32498.0,0.6424390458586392
+Switzerland,"Meat of chickens, fresh or chilled",2008,62404.0,35072.0,0.6401986129919159
+Switzerland,"Meat of chickens, fresh or chilled",2009,63770.0,37024.0,0.6326765482072345
+Switzerland,"Meat of chickens, fresh or chilled",2010,67259.0,34916.0,0.6582725715683876
+Switzerland,"Meat of chickens, fresh or chilled",2011,71329.0,35453.0,0.6679871139330599
+Switzerland,"Meat of chickens, fresh or chilled",2012,74650.0,35485.0,0.6778045126435738
+Switzerland,"Meat of chickens, fresh or chilled",2013,78298.0,34342.0,0.6951171875
+Switzerland,"Meat of chickens, fresh or chilled",2014,83020.0,37521.59,0.6887249454731765
+Switzerland,"Meat of chickens, fresh or chilled",2015,85489.0,37173.16,0.6969468008715972
+Switzerland,"Meat of chickens, fresh or chilled",2016,89302.0,35901.19,0.7132565871524519
+Switzerland,"Meat of chickens, fresh or chilled",2017,90103.0,33791.47,0.7272560268428445
+Switzerland,"Meat of chickens, fresh or chilled",2018,98900.0,30719.87,0.7630003023456203
+Switzerland,"Meat of chickens, fresh or chilled",2019,98219.0,30900.15,0.7606849952156594
+Switzerland,"Meat of chickens, fresh or chilled",2020,103487.0,28048.61,0.7867603305295046
+Switzerland,"Meat of chickens, fresh or chilled",2021,107315.0,30051.49,0.7812312886498011
+Switzerland,"Meat of chickens, fresh or chilled",2022,109515.0,33317.48,0.7667373695394772
+Switzerland,"Meat of chickens, fresh or chilled",2023,108316.0,32588.76,0.7687178204625592
+Switzerland,"Meat of chickens, fresh or chilled",2024,113613.0,39277.39,0.7431009888849128
+Switzerland,Raw milk of cattle,1961,3066000.0,9728.0,0.9968371715574329
+Switzerland,Raw milk of cattle,1962,3113000.0,9615.0,0.9969208499927145
+Switzerland,Raw milk of cattle,1963,3092000.0,9909.0,0.9968055155712175
+Switzerland,Raw milk of cattle,1964,3014000.0,12333.0,0.995924771001737
+Switzerland,Raw milk of cattle,1965,3095000.0,15234.0,0.9951019762500185
+Switzerland,Raw milk of cattle,1966,3131000.0,15935.0,0.9949363428224606
+Switzerland,Raw milk of cattle,1967,3252000.0,19140.0,0.9941488288486583
+Switzerland,Raw milk of cattle,1968,3300000.0,18027.0,0.9945669519868283
+Switzerland,Raw milk of cattle,1969,3193000.0,18443.0,0.9942570987559175
+Switzerland,Raw milk of cattle,1970,3183000.0,18689.0,0.9941627684637702
+Switzerland,Raw milk of cattle,1971,3140000.0,21146.0,0.9933106537945416
+Switzerland,Raw milk of cattle,1972,3214000.0,22902.0,0.9929247162873637
+Switzerland,Raw milk of cattle,1973,3274000.0,22820.0,0.9930781783658191
+Switzerland,Raw milk of cattle,1974,3339000.0,22855.0,0.9932016699114031
+Switzerland,Raw milk of cattle,1975,3375000.0,22811.0,0.9932865600823589
+Switzerland,Raw milk of cattle,1976,3452000.0,22925.0,0.993402735310834
+Switzerland,Raw milk of cattle,1977,3489000.0,22048.0,0.9937203934551735
+Switzerland,Raw milk of cattle,1978,3518000.0,22901.0,0.993532437083104
+Switzerland,Raw milk of cattle,1979,3647000.0,22993.0,0.9937348654343482
+Switzerland,Raw milk of cattle,1980,3655000.0,22969.0,0.9937549772714235
+Switzerland,Raw milk of cattle,1981,3656000.0,22938.0,0.9937650485004096
+Switzerland,Raw milk of cattle,1982,3663000.0,22917.0,0.9937825512620062
+Switzerland,Raw milk of cattle,1983,3733000.0,22936.0,0.9938933996745418
+Switzerland,Raw milk of cattle,1984,3853000.0,23058.0,0.9940511726088722
+Switzerland,Raw milk of cattle,1985,3845000.0,23002.0,0.9940532605722541
+Switzerland,Raw milk of cattle,1986,3845000.0,22880.0,0.9940846148277609
+Switzerland,Raw milk of cattle,1987,3761000.0,22917.0,0.9939435775150459
+Switzerland,Raw milk of cattle,1988,3776000.0,22933.0,0.9939633049595769
+Switzerland,Raw milk of cattle,1989,3892000.0,22901.0,0.9941502990752512
+Switzerland,Raw milk of cattle,1990,3866000.0,22946.0,0.994099686650316
+Switzerland,Raw milk of cattle,1991,3874500.0,23040.0,0.9940885789497991
+Switzerland,Raw milk of cattle,1992,3806700.0,22940.0,0.9940098808243072
+Switzerland,Raw milk of cattle,1993,3797800.0,22882.0,0.9940110168812794
+Switzerland,Raw milk of cattle,1994,3818200.0,22959.0,0.9940228977764264
+Switzerland,Raw milk of cattle,1995,3861600.0,22953.0,0.9940912120390686
+Switzerland,Raw milk of cattle,1996,3794500.0,22964.0,0.9939844881313877
+Switzerland,Raw milk of cattle,1997,3783000.0,22802.0,0.9940086215730614
+Switzerland,Raw milk of cattle,1998,3840400.0,23000.0,0.994046694621318
+Switzerland,Raw milk of cattle,1999,3835400.0,22785.0,0.9940943733905969
+Switzerland,Raw milk of cattle,2000,3827800.0,23012.31,0.9940240374893784
+Switzerland,Raw milk of cattle,2001,3873800.0,0.0,1.0
+Switzerland,Raw milk of cattle,2002,3880700.0,0.0,1.0
+Switzerland,Raw milk of cattle,2003,3849000.0,0.0,1.0
+Switzerland,Raw milk of cattle,2004,3870200.0,0.0,1.0
+Switzerland,Raw milk of cattle,2005,3871200.0,3.0,0.9999992250470978
+Switzerland,Raw milk of cattle,2006,3877700.0,206.0,0.9999468785473398
+Switzerland,Raw milk of cattle,2007,3911500.0,270.0,0.9999309775370229
+Switzerland,Raw milk of cattle,2008,4071300.0,63.0,0.9999845260665777
+Switzerland,Raw milk of cattle,2009,4068500.0,30.0,0.9999926263294113
+Switzerland,Raw milk of cattle,2010,4079400.0,102.0,0.999974996948157
+Switzerland,Raw milk of cattle,2011,4116500.0,34.0,0.9999917406245157
+Switzerland,Raw milk of cattle,2012,4083600.0,23932.0,0.9941736302967329
+Switzerland,Raw milk of cattle,2013,4002700.0,23802.0,0.9940886655464222
+Switzerland,Raw milk of cattle,2014,4066600.0,22787.86,0.9944275620752687
+Switzerland,Raw milk of cattle,2015,4042500.0,23474.03,0.9942267142321124
+Switzerland,Raw milk of cattle,2016,3956800.0,24515.37,0.9938423943542056
+Switzerland,Raw milk of cattle,2017,3892500.0,25005.57,0.9936169663186976
+Switzerland,Raw milk of cattle,2018,3913000.0,23695.65,0.9939808275501308
+Switzerland,Raw milk of cattle,2019,3792200.0,23230.46,0.9939114445293808
+Switzerland,Raw milk of cattle,2020,3780500.0,24402.88,0.9935864644198225
+Switzerland,Raw milk of cattle,2021,3811500.0,26080.58,0.9932039003595333
+Switzerland,Raw milk of cattle,2022,3711977.77,25667.09,0.9931328173324633
+Switzerland,Raw milk of cattle,2023,3739080.75,26923.04,0.9928510321546968
+Switzerland,Raw milk of cattle,2024,3703020.61,31100.66,0.9916712238968072
+Switzerland,Wheat,1961,316000.0,383400.0,0.45181584215041465
+Switzerland,Wheat,1962,419800.0,421200.0,0.4991676575505351
+Switzerland,Wheat,1963,302700.0,342500.0,0.46915685058896467
+Switzerland,Wheat,1964,388400.0,357500.0,0.5207132323367744
+Switzerland,Wheat,1965,352400.0,415900.0,0.4586749967460627
+Switzerland,Wheat,1966,347700.0,448275.0,0.436822764534062
+Switzerland,Wheat,1967,425600.0,411956.0,0.5081451270124028
+Switzerland,Wheat,1968,416100.0,333056.0,0.555425038309778
+Switzerland,Wheat,1969,378900.0,447845.0,0.45830334625549596
+Switzerland,Wheat,1970,347800.0,497317.0,0.4115406505844753
+Switzerland,Wheat,1971,378000.0,482646.0,0.4392049692905097
+Switzerland,Wheat,1972,409700.0,399476.0,0.5063175378409641
+Switzerland,Wheat,1973,345100.0,364815.0,0.4861145348386779
+Switzerland,Wheat,1974,411400.0,371553.0,0.5254466104606534
+Switzerland,Wheat,1975,355500.0,348172.0,0.5052069714298707
+Switzerland,Wheat,1976,399600.0,370093.0,0.5191680319296135
+Switzerland,Wheat,1977,323300.0,320431.0,0.5022284152852666
+Switzerland,Wheat,1978,407800.0,414164.0,0.496128784228993
+Switzerland,Wheat,1979,422800.0,324775.0,0.56556198374745
+Switzerland,Wheat,1980,394400.0,335415.0,0.5404109260566033
+Switzerland,Wheat,1981,408600.0,356512.0,0.5340394608893861
+Switzerland,Wheat,1982,434200.0,337557.0,0.5626123248639144
+Switzerland,Wheat,1983,445600.0,414388.0,0.5181467648385791
+Switzerland,Wheat,1984,596800.0,319841.0,0.6510727754922593
+Switzerland,Wheat,1985,549300.0,241734.0,0.6944075728729738
+Switzerland,Wheat,1986,491700.0,259877.0,0.654224384194833
+Switzerland,Wheat,1987,461500.0,288131.0,0.6156362263567008
+Switzerland,Wheat,1988,564500.0,227916.0,0.7123783467269716
+Switzerland,Wheat,1989,649000.0,274413.0,0.7028274455741905
+Switzerland,Wheat,1990,562600.0,221174.0,0.7178089602359864
+Switzerland,Wheat,1991,583651.0,237279.0,0.7109631759102482
+Switzerland,Wheat,1992,535209.0,237950.0,0.6922366550735359
+Switzerland,Wheat,1993,573811.0,263156.0,0.6855837804835794
+Switzerland,Wheat,1994,567322.0,206640.0,0.7330101477850334
+Switzerland,Wheat,1995,613368.0,278859.0,0.6874573398922024
+Switzerland,Wheat,1996,666291.0,221526.0,0.7504823629193854
+Switzerland,Wheat,1997,584588.0,224344.0,0.7226664293166792
+Switzerland,Wheat,1998,603242.0,184617.0,0.7656725378525853
+Switzerland,Wheat,1999,495094.0,249620.0,0.6648109207024442
+Switzerland,Wheat,2000,568700.0,298922.1,0.6554697027657548
+Switzerland,Wheat,2001,505600.0,259413.0,0.6609038016347435
+Switzerland,Wheat,2002,516500.0,295550.0,0.6360445785358044
+Switzerland,Wheat,2003,436900.0,313812.0,0.5819808395230128
+Switzerland,Wheat,2004,539400.0,279901.0,0.6583660950004944
+Switzerland,Wheat,2005,531300.0,202508.0,0.7240313542507032
+Switzerland,Wheat,2006,543800.0,257241.0,0.6788666248044731
+Switzerland,Wheat,2007,543900.0,332788.0,0.6204031536875149
+Switzerland,Wheat,2008,549084.0,403022.0,0.5767046946453441
+Switzerland,Wheat,2009,549919.0,377026.0,0.5932595785078942
+Switzerland,Wheat,2010,524017.0,336015.0,0.6092994214168775
+Switzerland,Wheat,2011,553150.0,462047.0,0.5448696164389769
+Switzerland,Wheat,2012,515595.0,390305.0,0.5691522243073187
+Switzerland,Wheat,2013,479659.0,436585.0,0.5235057473773361
+Switzerland,Wheat,2014,550826.0,419904.55,0.5674344955971562
+Switzerland,Wheat,2015,527257.0,396564.25,0.5707348688937389
+Switzerland,Wheat,2016,386720.0,484789.87,0.44373565155377986
+Switzerland,Wheat,2017,530552.0,527631.51,0.501379954408853
+Switzerland,Wheat,2018,511446.0,434704.02,0.540554868877982
+Switzerland,Wheat,2019,497459.0,391220.3,0.5597733625617249
+Switzerland,Wheat,2020,528720.0,371353.93,0.5874184135074327
+Switzerland,Wheat,2021,459090.0,427813.23,0.5176325719323404
+Switzerland,Wheat,2022,486667.0,584081.9,0.4545108568404787
+Switzerland,Wheat,2023,447449.0,416923.29,0.5176577328734127
+Switzerland,Wheat,2024,311807.0,406344.44,0.43418001083448365
+European Union (27),"Meat of chickens, fresh or chilled",1961,1471956.0,192627.0,0.8842791257630289
+European Union (27),"Meat of chickens, fresh or chilled",1962,1635143.0,222079.0,0.8804240957731494
+European Union (27),"Meat of chickens, fresh or chilled",1963,1840495.0,181958.0,0.9100310365679697
+European Union (27),"Meat of chickens, fresh or chilled",1964,2073473.0,191390.0,0.9154959924728339
+European Union (27),"Meat of chickens, fresh or chilled",1965,2232631.0,211827.0,0.9133439805470169
+European Union (27),"Meat of chickens, fresh or chilled",1966,2271915.0,209573.0,0.9155454308060325
+European Union (27),"Meat of chickens, fresh or chilled",1967,2398709.0,208271.0,0.9201102425028194
+European Union (27),"Meat of chickens, fresh or chilled",1968,2462132.0,218256.0,0.9185729827174275
+European Union (27),"Meat of chickens, fresh or chilled",1969,2728639.0,220813.0,0.925134228324448
+European Union (27),"Meat of chickens, fresh or chilled",1970,3038035.0,238125.0,0.9273158209611252
+European Union (27),"Meat of chickens, fresh or chilled",1971,3140187.0,253099.0,0.9254118279449478
+European Union (27),"Meat of chickens, fresh or chilled",1972,3441820.0,281287.0,0.9244483169567783
+European Union (27),"Meat of chickens, fresh or chilled",1973,3738903.0,264587.0,0.9339109127286442
+European Union (27),"Meat of chickens, fresh or chilled",1974,3834628.0,267793.0,0.9347231793128984
+European Union (27),"Meat of chickens, fresh or chilled",1975,3996622.0,253734.0,0.9403028828644001
+European Union (27),"Meat of chickens, fresh or chilled",1976,4272141.0,243578.0,0.9460599740595019
+European Union (27),"Meat of chickens, fresh or chilled",1977,4475523.0,241932.0,0.9487155680340353
+European Union (27),"Meat of chickens, fresh or chilled",1978,4631097.0,252596.0,0.9482776661022714
+European Union (27),"Meat of chickens, fresh or chilled",1979,4828353.0,248650.0,0.9510242558454269
+European Union (27),"Meat of chickens, fresh or chilled",1980,4995508.0,245729.0,0.9531162204647491
+European Union (27),"Meat of chickens, fresh or chilled",1981,5320501.0,257455.0,0.9538442038624901
+European Union (27),"Meat of chickens, fresh or chilled",1982,5254883.0,280577.0,0.9493127942393225
+European Union (27),"Meat of chickens, fresh or chilled",1983,5093431.0,286878.0,0.9466800141032792
+European Union (27),"Meat of chickens, fresh or chilled",1984,5075016.0,280595.0,0.9476072851444961
+European Union (27),"Meat of chickens, fresh or chilled",1985,5121764.0,292537.0,0.9459695720647966
+European Union (27),"Meat of chickens, fresh or chilled",1986,5250096.0,306763.0,0.9447956120535
+European Union (27),"Meat of chickens, fresh or chilled",1987,5455698.0,324197.0,0.9439095346887789
+European Union (27),"Meat of chickens, fresh or chilled",1988,5554315.0,362453.0,0.9387413871897631
+European Union (27),"Meat of chickens, fresh or chilled",1989,5465606.0,389510.0,0.9334752718818893
+European Union (27),"Meat of chickens, fresh or chilled",1990,5564834.0,464090.0,0.923022748337846
+European Union (27),"Meat of chickens, fresh or chilled",1991,6308710.9,498787.0,0.9267297607245681
+European Union (27),"Meat of chickens, fresh or chilled",1992,6509690.71,611021.0,0.9141910212230738
+European Union (27),"Meat of chickens, fresh or chilled",1993,6848867.2,627691.0,0.9160454605970967
+European Union (27),"Meat of chickens, fresh or chilled",1994,7203431.02,671625.0,0.914714892402759
+European Union (27),"Meat of chickens, fresh or chilled",1995,7470873.88,610379.0,0.9244697562291851
+European Union (27),"Meat of chickens, fresh or chilled",1996,7913889.3,718060.0,0.9168136912018238
+European Union (27),"Meat of chickens, fresh or chilled",1997,8092730.95,814485.0,0.9085589701010899
+European Union (27),"Meat of chickens, fresh or chilled",1998,8416798.65,945472.0,0.8990125328196958
+European Union (27),"Meat of chickens, fresh or chilled",1999,8031353.79,827403.0,0.9066005513398907
+European Union (27),"Meat of chickens, fresh or chilled",2000,6892259.0,858225.18,0.8892681850490534
+European Union (27),"Meat of chickens, fresh or chilled",2001,7237768.0,979677.0,0.8807808266438047
+European Union (27),"Meat of chickens, fresh or chilled",2002,7521044.4,1003413.0,0.8822901032973665
+European Union (27),"Meat of chickens, fresh or chilled",2003,7132372.63,1133122.0,0.862909353798709
+European Union (27),"Meat of chickens, fresh or chilled",2004,7231818.13,1224139.0,0.8552335375900848
+European Union (27),"Meat of chickens, fresh or chilled",2005,7384493.33,1391002.0,0.8414902011007053
+European Union (27),"Meat of chickens, fresh or chilled",2006,7087802.65,1347823.0,0.8402225210171578
+European Union (27),"Meat of chickens, fresh or chilled",2007,7625035.17,1390807.0,0.84573742820966
+European Union (27),"Meat of chickens, fresh or chilled",2008,7479107.0,1572637.0,0.8262614364701432
+European Union (27),"Meat of chickens, fresh or chilled",2009,8128325.0,1587136.0,0.8366381173265993
+European Union (27),"Meat of chickens, fresh or chilled",2010,8317389.0,1694849.0,0.8307222620956474
+European Union (27),"Meat of chickens, fresh or chilled",2011,8569991.4,1856626.0,0.8219340051741038
+European Union (27),"Meat of chickens, fresh or chilled",2012,8954508.05,1927842.0,0.822846904286083
+European Union (27),"Meat of chickens, fresh or chilled",2013,9064571.06,1935759.0,0.8240271892350838
+European Union (27),"Meat of chickens, fresh or chilled",2014,9436517.68,2011791.55,0.8242717322197978
+European Union (27),"Meat of chickens, fresh or chilled",2015,9704001.98,2108277.34,0.8215181606457305
+European Union (27),"Meat of chickens, fresh or chilled",2016,10010855.75,2170902.31,0.8217907218886269
+European Union (27),"Meat of chickens, fresh or chilled",2017,10110930.12,2438059.61,0.8057166622607476
+European Union (27),"Meat of chickens, fresh or chilled",2018,10640967.0,2550025.62,0.8066843266871602
+European Union (27),"Meat of chickens, fresh or chilled",2019,10894174.0,2557127.41,0.8098973971322229
+European Union (27),"Meat of chickens, fresh or chilled",2020,11021042.68,2388264.45,0.8218950146456971
+European Union (27),"Meat of chickens, fresh or chilled",2021,10766314.66,2617479.37,0.804429195179418
+European Union (27),"Meat of chickens, fresh or chilled",2022,10790737.27,2931049.49,0.7863944731640765
+European Union (27),"Meat of chickens, fresh or chilled",2023,11067625.83,3066305.45,0.7830536041774216
+European Union (27),"Meat of chickens, fresh or chilled",2024,11761942.78,3137738.27,0.7894090310074121
+European Union (27),Raw milk of cattle,1961,104990162.0,63061.0,0.9993997233192932
+European Union (27),Raw milk of cattle,1962,104571191.0,61395.0,0.9994132325086565
+European Union (27),Raw milk of cattle,1963,104149662.0,64838.0,0.9993778408954608
+European Union (27),Raw milk of cattle,1964,104561839.0,80377.0,0.9992318874439738
+European Union (27),Raw milk of cattle,1965,108888047.0,95755.0,0.9991213831941741
+European Union (27),Raw milk of cattle,1966,112371117.0,205999.0,0.9981701520937879
+European Union (27),Raw milk of cattle,1967,114911001.0,178601.0,0.9984481569412327
+European Union (27),Raw milk of cattle,1968,117528903.0,124318.0,0.9989433523456192
+European Union (27),Raw milk of cattle,1969,117094130.0,152472.0,0.998699561459359
+European Union (27),Raw milk of cattle,1970,115521273.0,175484.0,0.998483241842293
+European Union (27),Raw milk of cattle,1971,115145408.0,401504.0,0.9965251862377767
+European Union (27),Raw milk of cattle,1972,119882201.0,205413.0,0.9982894738836263
+European Union (27),Raw milk of cattle,1973,121890098.0,494896.0,0.9959562362686393
+European Union (27),Raw milk of cattle,1974,123586045.0,944686.0,0.9924140331272929
+European Union (27),Raw milk of cattle,1975,124166126.0,727964.0,0.9941713495010052
+European Union (27),Raw milk of cattle,1976,126650650.0,812423.0,0.9936262089020873
+European Union (27),Raw milk of cattle,1977,129321033.0,900987.0,0.9930811471055356
+European Union (27),Raw milk of cattle,1978,133723841.0,1149812.0,0.9914748953971018
+European Union (27),Raw milk of cattle,1979,136492107.0,1277355.0,0.9907283153940167
+European Union (27),Raw milk of cattle,1980,138204691.0,1110326.0,0.9920301054121108
+European Union (27),Raw milk of cattle,1981,137225361.0,1409996.0,0.9898294632010793
+European Union (27),Raw milk of cattle,1982,139343165.0,1684334.0,0.9880566980770183
+European Union (27),Raw milk of cattle,1983,144861449.0,1551400.0,0.9894039354428518
+European Union (27),Raw milk of cattle,1984,145493117.0,1705223.0,0.9884154739788505
+European Union (27),Raw milk of cattle,1985,143454633.0,2265398.0,0.9844537639440936
+European Union (27),Raw milk of cattle,1986,144026285.0,2154379.0,0.9852622163489421
+European Union (27),Raw milk of cattle,1987,139226033.0,1974590.0,0.9860157132592822
+European Union (27),Raw milk of cattle,1988,136734066.0,2077884.0,0.9850309429411517
+European Union (27),Raw milk of cattle,1989,137153609.0,2094362.0,0.984959479230042
+European Union (27),Raw milk of cattle,1990,135794492.0,1977106.0,0.9856493934257771
+European Union (27),Raw milk of cattle,1991,129161654.97,2337374.0,0.9822251615216623
+European Union (27),Raw milk of cattle,1992,131816040.15,2524538.0,0.9812079266386572
+European Union (27),Raw milk of cattle,1993,133424586.51,2512149.0,0.9815197195182374
+European Union (27),Raw milk of cattle,1994,132853073.53,3036093.0,0.9776575787641635
+European Union (27),Raw milk of cattle,1995,134263827.11,3177168.0,0.9768834036929289
+European Union (27),Raw milk of cattle,1996,134071633.92,3335597.0,0.9757247345888075
+European Union (27),Raw milk of cattle,1997,133741274.8,3700473.0,0.9730760627012339
+European Union (27),Raw milk of cattle,1998,134605569.0,4073627.0,0.970625536363796
+European Union (27),Raw milk of cattle,1999,134422892.61,4441607.0,0.9680148129113328
+European Union (27),Raw milk of cattle,2000,134947822.9,4494591.92,0.967767397561195
+European Union (27),Raw milk of cattle,2001,134021584.5,4188477.0,0.9696948474333759
+European Union (27),Raw milk of cattle,2002,134143156.84,4242748.0,0.9693411839529076
+European Union (27),Raw milk of cattle,2003,134282807.56,4864897.0,0.965037892537406
+European Union (27),Raw milk of cattle,2004,132432688.13,4906649.0,0.9642735351536206
+European Union (27),Raw milk of cattle,2005,133386714.14,5071013.0,0.9633750090749902
+European Union (27),Raw milk of cattle,2006,132702413.0,5494147.0,0.9602439669988891
+European Union (27),Raw milk of cattle,2007,132798030.89,5686919.0,0.9589347506388444
+European Union (27),Raw milk of cattle,2008,134675592.04,6292991.0,0.9553589114376332
+European Union (27),Raw milk of cattle,2009,133343620.12,6649172.0,0.9525034689335975
+European Union (27),Raw milk of cattle,2010,133693426.8,6775755.0,0.9517634052311393
+European Union (27),Raw milk of cattle,2011,136237896.56,7220385.0,0.9496690959804914
+European Union (27),Raw milk of cattle,2012,136703700.42,7381390.0,0.9487706189552044
+European Union (27),Raw milk of cattle,2013,138312509.71,7070263.0,0.9513679449895808
+European Union (27),Raw milk of cattle,2014,143283639.69,7521125.87,0.9501267361010046
+European Union (27),Raw milk of cattle,2015,146200607.54,7874709.96,0.9488905160945068
+European Union (27),Raw milk of cattle,2016,147708602.4,8006678.96,0.9485812895814042
+European Union (27),Raw milk of cattle,2017,148814328.0,8501261.25,0.9459604652626631
+European Union (27),Raw milk of cattle,2018,151273130.0,7978432.05,0.9499004471460378
+European Union (27),Raw milk of cattle,2019,152581300.0,7813426.7,0.9512862619566408
+European Union (27),Raw milk of cattle,2020,154495260.0,7162169.21,0.9556953908954222
+European Union (27),Raw milk of cattle,2021,153993850.0,7045031.1,0.9562526077436836
+European Union (27),Raw milk of cattle,2022,154263670.0,7529847.61,0.9534601402996221
+European Union (27),Raw milk of cattle,2023,155180320.0,8107640.38,0.9503475923078953
+European Union (27),Raw milk of cattle,2024,154561526.46,8736307.55,0.9465007750839792
+European Union (27),Wheat,1961,43338198.0,12252600.0,0.779593018254568
+European Union (27),Wheat,1962,52137928.0,9888156.0,0.8405806821530116
+European Union (27),Wheat,1963,45735066.0,8547663.0,0.8425343906346344
+European Union (27),Wheat,1964,51445612.0,9487438.0,0.8442973394569941
+European Union (27),Wheat,1965,57444208.0,8728028.0,0.8681013590050063
+European Union (27),Wheat,1966,51848550.0,9132585.0,0.8502391764272672
+European Union (27),Wheat,1967,61069043.0,7952128.0,0.8847871184335601
+European Union (27),Wheat,1968,61343109.0,8599895.0,0.8770442430525289
+European Union (27),Wheat,1969,58776203.0,10979179.0,0.8426045606058039
+European Union (27),Wheat,1970,54932949.0,10943335.0,0.833880505463848
+European Union (27),Wheat,1971,66275120.0,11726810.0,0.8496600020025146
+European Union (27),Wheat,1972,67478184.0,11203678.0,0.8576078690156062
+European Union (27),Wheat,1973,67161028.0,12101857.0,0.8473200035552579
+European Union (27),Wheat,1974,72398873.0,11458269.0,0.8633596527771004
+European Union (27),Wheat,1975,63368613.0,11157134.0,0.8502915509186375
+European Union (27),Wheat,1976,69413944.0,12695639.0,0.845381762564791
+European Union (27),Wheat,1977,65572093.0,11712225.0,0.8484527611410119
+European Union (27),Wheat,1978,75921614.0,12598774.0,0.8576737598574466
+European Union (27),Wheat,1979,67032819.0,13229592.0,0.8351707625628141
+European Union (27),Wheat,1980,79477732.0,14345152.0,0.8471039112376891
+European Union (27),Wheat,1981,74317845.0,15237745.0,0.8298515480719852
+European Union (27),Wheat,1982,81663348.0,15130315.0,0.8436848598239329
+European Union (27),Wheat,1983,80105252.0,11960488.0,0.8700875265869801
+European Union (27),Wheat,1984,100900371.0,14320456.0,0.8757129559571726
+European Union (27),Wheat,1985,88138400.0,16573406.0,0.84172361615079
+European Union (27),Wheat,1986,89911745.0,15482641.0,0.8530980483154008
+European Union (27),Wheat,1987,91754135.0,14897008.0,0.8603202217907782
+European Union (27),Wheat,1988,97764111.0,16198891.0,0.8578583337072851
+European Union (27),Wheat,1989,100699175.0,14924918.0,0.8709186155518642
+European Union (27),Wheat,1990,102768454.0,14686953.0,0.8749571997141009
+European Union (27),Wheat,1991,104909654.4,15729733.0,0.8696136200704878
+European Union (27),Wheat,1992,93199258.5,16397577.0,0.8503827512428496
+European Union (27),Wheat,1993,98562829.96,17435412.0,0.8496924461492071
+European Union (27),Wheat,1994,102234899.86,15892057.0,0.865466296411625
+European Union (27),Wheat,1995,105659357.8,18165456.0,0.8532971264601248
+European Union (27),Wheat,1996,108976284.24,21176429.0,0.8372955240591033
+European Union (27),Wheat,1997,112212200.14,20970816.0,0.8425413644487838
+European Union (27),Wheat,1998,119668527.86,21426412.0,0.8481418821875529
+European Union (27),Wheat,1999,108718311.24,21163024.0,0.837058773988625
+European Union (27),Wheat,2000,116531303.13,21073761.37,0.8468533011733735
+European Union (27),Wheat,2001,115700807.24,23633806.0,0.8303809408844345
+European Union (27),Wheat,2002,118478274.59,28412350.0,0.8065747893760794
+European Union (27),Wheat,2003,97892463.02,25118063.0,0.7958055801182728
+European Union (27),Wheat,2004,134721123.67,23479560.0,0.8515837008076566
+European Union (27),Wheat,2005,121141713.44,27300947.0,0.8160842245815518
+European Union (27),Wheat,2006,112792557.4,26451179.0,0.8100368484510159
+European Union (27),Wheat,2007,107849383.9,26114910.0,0.8050606677366289
+European Union (27),Wheat,2008,134107918.57,26350712.0,0.8357787804470603
+European Union (27),Wheat,2009,125718524.86,32117597.0,0.796513012221067
+European Union (27),Wheat,2010,122501974.82,31970336.0,0.7930351670775893
+European Union (27),Wheat,2011,123634113.72,29660307.0,0.8065141127727274
+European Union (27),Wheat,2012,121346612.67,29159782.0,0.8062555277871369
+European Union (27),Wheat,2013,132514386.41,25809686.0,0.8369819219078537
+European Union (27),Wheat,2014,140731909.54,30891675.2,0.820003321531833
+European Union (27),Wheat,2015,144774160.37,33192294.96,0.813491284644333
+European Union (27),Wheat,2016,130232378.22,38047731.14,0.773902386415706
+European Union (27),Wheat,2017,137501920.84,36453244.64,0.7904445979548039
+European Union (27),Wheat,2018,124510720.0,35090023.39,0.7801387221345574
+European Union (27),Wheat,2019,139432180.0,32377955.94,0.8115480453882703
+European Union (27),Wheat,2020,126418100.0,31951668.33,0.7982464161757103
+European Union (27),Wheat,2021,138180510.0,32003274.88,0.8119487417525345
+European Union (27),Wheat,2022,134304190.0,32161595.85,0.8067975609175307
+European Union (27),Wheat,2023,133481170.0,39310427.31,0.7724980385505992
+European Union (27),Wheat,2024,119410520.0,39993785.23,0.7491047360841724

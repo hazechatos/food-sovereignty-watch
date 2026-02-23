@@ -1,8 +1,16 @@
-﻿const DATA_URL = "../data/agri_self_sufficiency_prepared.csv";
+﻿const DATA_SOURCES = [
+  "data/agri_self_sufficiency_prepared.csv",
+  "./data/agri_self_sufficiency_prepared.csv",
+  "../data/agri_self_sufficiency_prepared.csv"
+];
 const MAP_SOURCES = [
+  "data/europe.geojson",
+  "./data/europe.geojson",
   "../data/europe.geojson",
+  "https://cdn.jsdelivr.net/gh/datasets/geo-countries@master/data/countries.geojson",
   "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"
 ];
+
 
 const PRODUCT_MAP = {
   "Meat of chickens, fresh or chilled": "volaille",
@@ -55,7 +63,7 @@ init();
 
 async function init() {
   try {
-    const [rows, geometry] = await Promise.all([d3.csv(DATA_URL, parseRow), loadMapGeometry()]);
+    const [rows, geometry] = await Promise.all([loadDataset(), loadMapGeometry()]);
 
     app.rows = rows.filter((d) => d.country_id && d.product);
     buildIndices();
@@ -74,7 +82,7 @@ async function init() {
     d3.select("#map-container")
       .append("div")
       .attr("class", "no-data-msg")
-      .text("Map failed to load. Add data/europe.geojson and run via a local server.");
+      .text(`Data load failed: ${error.message}`);
   }
 }
 
@@ -94,6 +102,7 @@ function parseRow(d) {
 }
 
 async function loadMapGeometry() {
+  let lastError = null;
   for (const source of MAP_SOURCES) {
     try {
       const raw = await d3.json(source);
@@ -109,11 +118,25 @@ async function loadMapGeometry() {
         return raw.features;
       }
     } catch (err) {
-      // Try next source.
+      lastError = err;
     }
   }
+  const details = lastError && lastError.message ? ` (${lastError.message})` : "";
+  throw new Error(`Unable to load map geometry from known sources${details}`);
+}
 
-  throw new Error("Unable to load map geometry. Add data/europe.geojson.");
+async function loadDataset() {
+  let lastError = null;
+  for (const source of DATA_SOURCES) {
+    try {
+      const rows = await d3.csv(source, parseRow);
+      if (rows && rows.length) return rows;
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  const details = lastError && lastError.message ? ` (${lastError.message})` : "";
+  throw new Error(`Unable to load dataset CSV from known paths${details}`);
 }
 
 function buildIndices() {

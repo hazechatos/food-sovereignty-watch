@@ -36,6 +36,15 @@ const COUNTRY_NAME_TO_ID = {
   "European Union (27)": "EU27"
 };
 
+const EUROPE_BOUNDS = { lonMin: -31, lonMax: 45, latMin: 34, latMax: 72 };
+const EXCLUDED_MAP_FEATURE_IDS = new Set(["GUY", "SJM"]);
+const EXCLUDED_MAP_FEATURE_NAMES = new Set([
+  "guyana",
+  "french guiana",
+  "svalbard",
+  "svalbard and jan mayen"
+]);
+
 const state = {
   selectedCountryId: null,
   selectedYear: null,
@@ -196,6 +205,8 @@ function initMap(features) {
   const safeHeight = Math.max(380, Math.round(height));
 
   let europeFeatures = features
+    .map(trimFeatureToEurope)
+    .filter((f) => f != null)
     .filter(isEuropeFeature)
     .map((f) => {
       const id = getFeatureCountryId(f);
@@ -495,13 +506,67 @@ function renderLegend(products) {
 
 function isEuropeFeature(feature) {
   const props = feature.properties || {};
+  const name = (props.ADMIN || props.NAME || props.name || "").trim().toLowerCase();
+  if (EXCLUDED_MAP_FEATURE_NAMES.has(name)) return false;
+
+  const iso = getIso3(feature);
+  if (iso && EXCLUDED_MAP_FEATURE_IDS.has(iso)) return false;
+
   const continent = (props.CONTINENT || props.continent || "").toLowerCase();
 
   if (continent === "europe") return true;
 
   // Fallback bounding box filter if continent metadata is absent.
   const [lon, lat] = d3.geoCentroid(feature);
-  return lon >= -31 && lon <= 45 && lat >= 34 && lat <= 73;
+  return isPointInEuropeBounds([lon, lat]);
+}
+
+function trimFeatureToEurope(feature) {
+  const geometry = feature?.geometry;
+  if (!geometry) return null;
+
+  if (geometry.type === "Polygon") {
+    return polygonIntersectsEurope(geometry.coordinates)
+      ? feature
+      : null;
+  }
+
+  if (geometry.type === "MultiPolygon") {
+    const kept = geometry.coordinates.filter((coords) => polygonIntersectsEurope(coords));
+    if (!kept.length) return null;
+    return {
+      ...feature,
+      geometry: {
+        ...geometry,
+        coordinates: kept
+      }
+    };
+  }
+
+  return feature;
+}
+
+function polygonIntersectsEurope(polygonCoordinates) {
+  const polygon = {
+    type: "Feature",
+    geometry: { type: "Polygon", coordinates: polygonCoordinates }
+  };
+  const [[minLon, minLat], [maxLon, maxLat]] = d3.geoBounds(polygon);
+  return !(
+    maxLon < EUROPE_BOUNDS.lonMin ||
+    minLon > EUROPE_BOUNDS.lonMax ||
+    maxLat < EUROPE_BOUNDS.latMin ||
+    minLat > EUROPE_BOUNDS.latMax
+  );
+}
+
+function isPointInEuropeBounds([lon, lat]) {
+  return (
+    lon >= EUROPE_BOUNDS.lonMin &&
+    lon <= EUROPE_BOUNDS.lonMax &&
+    lat >= EUROPE_BOUNDS.latMin &&
+    lat <= EUROPE_BOUNDS.latMax
+  );
 }
 
 function getIso3(feature) {

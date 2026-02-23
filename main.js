@@ -19,9 +19,9 @@ const PRODUCT_MAP = {
 };
 
 const PRODUCT_LABEL = {
-  volaille: "Volaille",
-  ble: "Ble",
-  lait: "Lait"
+  volaille: "Poultry",
+  ble: "Wheat",
+  lait: "Milk"
 };
 
 const PRODUCT_COLOR = {
@@ -39,8 +39,7 @@ const COUNTRY_NAME_TO_ID = {
 const state = {
   selectedCountryId: null,
   selectedYear: null,
-  selectedProducts: ["volaille", "ble", "lait"],
-  chartMode: "single"
+  selectedProducts: ["volaille", "ble", "lait"]
 };
 
 const app = {
@@ -73,7 +72,6 @@ async function init() {
     initRegionChips();
 
     state.selectedYear = app.latestYear;
-    d3.select("#year-select").property("value", String(app.latestYear));
     state.selectedCountryId = app.byCountryYearProduct.EU27 ? "EU27" : null;
 
     updateMap();
@@ -156,21 +154,6 @@ function buildIndices() {
 }
 
 function initControls() {
-  const yearSelect = d3.select("#year-select");
-
-  yearSelect
-    .selectAll("option")
-    .data(app.years)
-    .join("option")
-    .attr("value", (d) => d)
-    .text((d) => d);
-
-  yearSelect.on("change", (event) => {
-    state.selectedYear = +event.target.value;
-    updateMap();
-    updateCharts();
-  });
-
   d3.selectAll('input[name="product"]').on("change", () => {
     const selected = d3
       .selectAll('input[name="product"]:checked')
@@ -185,11 +168,6 @@ function initControls() {
     }
 
     updateMap();
-    updateCharts();
-  });
-
-  d3.select("#chart-mode").on("change", (event) => {
-    state.chartMode = event.target.value;
     updateCharts();
   });
 }
@@ -345,12 +323,7 @@ function updateCharts() {
   }
 
   renderLegend(state.selectedProducts);
-
-  if (state.chartMode === "multiples") {
-    drawSmallMultiples(seriesByProduct);
-  } else {
-    drawSingleChart(seriesByProduct);
-  }
+  drawSmallMultiples(seriesByProduct);
 }
 
 function drawSingleChart(seriesByProduct) {
@@ -409,28 +382,6 @@ function drawSingleChart(seriesByProduct) {
     .attr("stroke", (d) => PRODUCT_COLOR[d.product])
     .attr("d", (d) => line(d.values));
 
-  const points = g
-    .selectAll(".series-points")
-    .data(seriesByProduct)
-    .join("g")
-    .attr("class", "series-points")
-    .attr("fill", (d) => PRODUCT_COLOR[d.product]);
-
-  points
-    .selectAll("circle")
-    .data((d) => d.values.map((v) => ({ ...v, product: d.product })))
-    .join("circle")
-    .attr("cx", (d) => x(d.year))
-    .attr("cy", (d) => y(d.value))
-    .attr("r", 3)
-    .on("mousemove", (event, d) => {
-      showTooltip(event.clientX, event.clientY, [
-        `<strong>${PRODUCT_LABEL[d.product]}</strong>`,
-        `Year: ${d.year}`,
-        `Rate: ${d3.format(".1%")(d.value)}`
-      ]);
-    })
-    .on("mouseleave", hideTooltip);
 }
 
 function drawSmallMultiples(seriesByProduct) {
@@ -490,21 +441,6 @@ function drawSmallMultiples(seriesByProduct) {
       .duration(450)
       .attr("opacity", 1);
 
-    g.selectAll("circle")
-      .data(series.values)
-      .join("circle")
-      .attr("cx", (d) => x(d.year))
-      .attr("cy", (d) => y(d.value))
-      .attr("r", 2.8)
-      .attr("fill", PRODUCT_COLOR[series.product])
-      .on("mousemove", (event, d) => {
-        showTooltip(event.clientX, event.clientY, [
-          `<strong>${PRODUCT_LABEL[series.product]}</strong>`,
-          `Year: ${d.year}`,
-          `Rate: ${d3.format(".1%")(d.value)}`
-        ]);
-      })
-      .on("mouseleave", hideTooltip);
   });
 
   app.chartsSvg

@@ -35,3 +35,6 @@ Then open `http://localhost:8000/`.
 ## Notes
 - If `EU27` is not in map geometry, it is selectable via a dedicated chip above the map.
 - Map loader tries `data/europe.geojson` first, then a remote fallback and filters Europe features.
+
+## To-do
+- Try Supply Utilization Accounts data (https://www.fao.org/faostat/en/#data/SCL) to incorporate stock variation.

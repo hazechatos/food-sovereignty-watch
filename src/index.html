@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Europe Food Self-Sufficiency</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="controls-bar">
+        <div class="control-group">
+          <span class="control-label">Products</span>
+          <label><input type="checkbox" name="product" value="volaille" checked /> Volaille</label>
+          <label><input type="checkbox" name="product" value="ble" checked /> Ble</label>
+          <label><input type="checkbox" name="product" value="lait" checked /> Lait</label>
+        </div>
+
+        <div class="control-group">
+          <label for="year-select" class="control-label">Year</label>
+          <select id="year-select"></select>
+        </div>
+
+        <div class="control-group">
+          <label for="chart-mode" class="control-label">Chart mode</label>
+          <select id="chart-mode">
+            <option value="single">Single chart</option>
+            <option value="multiples">Small multiples</option>
+          </select>
+        </div>
+      </header>
+
+      <main class="main-layout">
+        <section class="panel panel-map">
+          <div class="panel-header">
+            <h2>Europe Map</h2>
+            <div id="region-chips" class="region-chips"></div>
+          </div>
+          <div id="map-container" class="map-container"></div>
+        </section>
+
+        <section class="panel panel-charts">
+          <div class="panel-header charts-header">
+            <h2 id="chart-title">Self-sufficiency time series</h2>
+            <div id="chart-legend" class="legend"></div>
+          </div>
+          <div id="charts-container" class="charts-container"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="tooltip" class="tooltip hidden"></div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

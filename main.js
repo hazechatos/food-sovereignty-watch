@@ -1,4 +1,4 @@
-﻿const DATA_SOURCES = [
+const DATA_SOURCES = [
   "data/agri_self_sufficiency_prepared.csv",
   "./data/agri_self_sufficiency_prepared.csv",
   "../data/agri_self_sufficiency_prepared.csv"
@@ -44,6 +44,7 @@ const EXCLUDED_MAP_FEATURE_NAMES = new Set([
   "svalbard",
   "svalbard and jan mayen"
 ]);
+const INDEPENDENT_SELECTABLE_IDS = new Set(["NOR", "CHE"]);
 
 const state = {
   selectedCountryId: null,
@@ -78,7 +79,6 @@ async function init() {
     initControls();
     initMap(geometry);
     initCharts();
-    initRegionChips();
 
     state.selectedYear = app.latestYear;
     state.selectedCountryId = app.byCountryYearProduct.EU27 ? "EU27" : null;
@@ -181,23 +181,6 @@ function initControls() {
   });
 }
 
-function initRegionChips() {
-  const chips = [{ id: "EU27", label: "EU27" }];
-
-  d3.select("#region-chips")
-    .selectAll("button")
-    .data(chips)
-    .join("button")
-    .attr("class", "chip")
-    .classed("active", (d) => d.id === state.selectedCountryId)
-    .text((d) => d.label)
-    .on("click", (_, d) => {
-      state.selectedCountryId = d.id;
-      updateMap();
-      updateCharts();
-    });
-}
-
 function initMap(features) {
   const mapContainer = document.getElementById("map-container");
   const { width, height } = mapContainer.getBoundingClientRect();
@@ -233,6 +216,26 @@ function initMap(features) {
   app.mapG = app.mapSvg.append("g");
 
   app.mapG
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("width", safeWidth)
+    .attr("height", safeHeight)
+    .attr("fill", "transparent")
+    .style("pointer-events", "all")
+    .on("mousemove", (event) => {
+      showTooltip(event.clientX, event.clientY, [
+        "<strong>European Union (EU27)</strong>"
+      ]);
+    })
+    .on("mouseleave", hideTooltip)
+    .on("click", () => {
+      state.selectedCountryId = "EU27";
+      updateMap();
+      updateCharts();
+    });
+
+  app.mapG
     .selectAll("path")
     .data(app.mapFeatures)
     .join("path")
@@ -241,23 +244,15 @@ function initMap(features) {
     .attr("fill", "#d4d8db")
     .style("pointer-events", "all")
     .on("mousemove", (event, d) => {
-      const countryId = getFeatureCountryId(d);
-      const value = getValue(countryId, state.selectedYear, state.selectedProducts);
-      const products = state.selectedProducts.map((p) => PRODUCT_LABEL[p]).join(", ");
-      const countryName = getCountryName(d, countryId);
-
+      const entityId = getSelectableEntityId(d);
+      const label = entityId === "EU27" ? "European Union (EU27)" : app.countryNames[entityId] || entityId;
       showTooltip(event.clientX, event.clientY, [
-        `<strong>${countryName}</strong>`,
-        `Year: ${state.selectedYear ?? "-"}`,
-        `Products: ${products}`,
-        `Rate: ${value == null ? "No data" : d3.format(".1%")((value))}`
+        `<strong>${label}</strong>`
       ]);
     })
     .on("mouseleave", hideTooltip)
     .on("click", (_, d) => {
-      const id = getFeatureCountryId(d);
-      if (!id) return;
-      state.selectedCountryId = id;
+      state.selectedCountryId = getSelectableEntityId(d);
       updateMap();
       updateCharts();
     });
@@ -266,23 +261,24 @@ function initMap(features) {
 function updateMap() {
   if (!app.mapG) return;
 
-  const color = d3.scaleSequential(d3.interpolateYlGn).domain([0, 1]);
+  const euColor = d3.scaleSequential(d3.interpolateYlGn).domain([0, 1]);
+  const nonEuColor = d3.scaleSequential(d3.interpolateBlues).domain([0, 1]);
 
   app.mapG
     .selectAll(".country")
     .transition()
     .duration(400)
     .attr("fill", (d) => {
-      const id = getFeatureCountryId(d);
-      const value = getValue(id, state.selectedYear, state.selectedProducts);
-      return value == null ? "#d4d8db" : color(value);
+      const entityId = getSelectableEntityId(d);
+      const value = getValue(entityId, state.selectedYear, state.selectedProducts);
+      if (value == null) return "#d4d8db";
+      return entityId === "EU27" ? euColor(value) : nonEuColor(value);
     })
     .attr("class", (d) => {
-      const id = getFeatureCountryId(d);
-      return `country${id === state.selectedCountryId ? " selected" : ""}`;
+      const entityId = getSelectableEntityId(d);
+      return `country${entityId === state.selectedCountryId ? " selected" : ""}`;
     });
 
-  d3.selectAll(".chip").classed("active", (d) => d.id === state.selectedCountryId);
 }
 
 function initCharts() {
@@ -314,7 +310,7 @@ function updateCharts() {
       .attr("class", "no-data-msg")
       .attr("x", 40)
       .attr("y", 50)
-      .text("Click a country on the map");
+      .text("Click the European Union (EU27) map");
     return;
   }
 
@@ -591,6 +587,12 @@ function getFeatureCountryId(feature) {
 function getCountryName(feature, countryId) {
   const p = feature.properties || {};
   return app.countryNames[countryId] || p.ADMIN || p.NAME || p.name || countryId;
+}
+
+function getSelectableEntityId(feature) {
+  const id = getFeatureCountryId(feature);
+  if (id && INDEPENDENT_SELECTABLE_IDS.has(id)) return id;
+  return "EU27";
 }
 
 function showTooltip(x, y, lines) {

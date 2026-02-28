@@ -255,15 +255,11 @@ function initMap(features) {
     .attr("d", app.mapPath)
     .attr("fill", "#d4d8db")
     .style("pointer-events", "all")
+    .on("mouseenter", (event, d) => {
+      showTooltip(event.clientX, event.clientY, getCountryTooltipLines(d));
+    })
     .on("mousemove", (event, d) => {
-      const entityId = getSelectableEntityId(d);
-      const label = getCountryName(d, entityId);
-      showTooltip(event.clientX, event.clientY, [
-        `<strong>${label}</strong>`,
-        ...(entityId && getValue(entityId, state.selectedYear, state.selectedProducts) != null
-          ? []
-          : ["No data for current filters"])
-      ]);
+      showTooltip(event.clientX, event.clientY, getCountryTooltipLines(d));
     })
     .on("mouseleave", hideTooltip)
     .on("click", (_, d) => {
@@ -273,6 +269,7 @@ function initMap(features) {
       updateMap();
       updateCharts();
     });
+
 }
 
 function updateMap() {
@@ -629,6 +626,15 @@ function getCountryName(feature, countryId) {
     countryId ||
     "Unknown"
   );
+}
+
+function getCountryTooltipLines(feature) {
+  const entityId = getSelectableEntityId(feature);
+  const label = getCountryName(feature, entityId);
+  const lines = [`<strong>${label}</strong>`];
+  const value = entityId ? getValue(entityId, state.selectedYear, state.selectedProducts) : null;
+  lines.push(value == null ? "No data for current filters" : `Self-sufficiency: ${d3.format(".1%")(value)}`);
+  return lines;
 }
 
 function getSelectableEntityId(feature) {

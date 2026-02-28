@@ -112,6 +112,7 @@ async function init() {
 
     state.selectedYear = getDefaultSelectedYear();
     state.selectedCountryId = getDefaultSelectedCountryId();
+    syncYearControl(state.selectedYear);
 
     updateMap();
     updateCharts();
@@ -211,6 +212,22 @@ function initControls() {
     updateMap();
     updateCharts();
   });
+
+  const yearSlider = d3.select("#year-slider");
+  const yearValue = d3.select("#year-value");
+  if (!yearSlider.empty()) {
+    const [minYear, maxYear] = d3.extent(app.years);
+    yearSlider.attr("min", minYear).attr("max", maxYear).attr("step", 1).property("value", maxYear);
+    yearValue.text(maxYear);
+
+    yearSlider.on("input", (event) => {
+      const requestedYear = +event.target.value;
+      const selectedYear = getClosestAvailableYear(requestedYear);
+      state.selectedYear = selectedYear;
+      syncYearControl(selectedYear);
+      updateMap();
+    });
+  }
 }
 
 function initMap(features) {
@@ -662,6 +679,21 @@ function getDefaultSelectedYear() {
   }
 
   return app.latestYear || app.years[0] || null;
+}
+
+function getClosestAvailableYear(year) {
+  if (!app.years.length) return year;
+  return app.years.reduce((best, current) => {
+    return Math.abs(current - year) < Math.abs(best - year) ? current : best;
+  }, app.years[0]);
+}
+
+function syncYearControl(year) {
+  const yearSlider = d3.select("#year-slider");
+  const yearValue = d3.select("#year-value");
+  if (yearSlider.empty() || yearValue.empty() || year == null) return;
+  yearSlider.property("value", year);
+  yearValue.text(year);
 }
 
 function buildGeometryCountryIndex(features) {

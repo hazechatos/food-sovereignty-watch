@@ -137,6 +137,30 @@ svg text {
   font-size: 1rem;
 }
 
+.year-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.year-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+#year-slider {
+  width: 130px;
+}
+
+.year-value {
+  min-width: 42px;
+  text-align: right;
+  color: var(--text);
+  font-size: 0.84rem;
+  font-variant-numeric: tabular-nums;
+}
+
 .region-chips {
   display: flex;
   gap: 8px;
@@ -243,5 +267,10 @@ svg {
   .main-layout {
     grid-template-columns: 1fr;
     grid-template-rows: 42vh auto;
+  }
+
+  .year-control {
+    width: 100%;
+    justify-content: flex-end;
   }
 }

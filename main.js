@@ -363,6 +363,14 @@ function drawSingleChart(seriesByProduct) {
   const x = d3.scaleLinear().domain(d3.extent(app.years)).range([0, innerW]);
   const y = d3.scaleLinear().domain([0, 1]).range([innerH, 0]);
 
+  g.append("g")
+    .attr("class", "chart-grid")
+    .attr("transform", `translate(0,${innerH})`)
+    .call(d3.axisBottom(x).ticks(Math.min(10, app.years.length)).tickSize(-innerH).tickFormat(""));
+  g.append("g")
+    .attr("class", "chart-grid")
+    .call(d3.axisLeft(y).ticks(5).tickSize(-innerW).tickFormat(""));
+
   g.append("g").attr("transform", `translate(0,${innerH})`).call(d3.axisBottom(x).tickFormat(d3.format("d")));
   g.append("g").call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(".0%")));
 
@@ -424,6 +432,15 @@ function drawSmallMultiples(seriesByProduct) {
   seriesByProduct.forEach((series, i) => {
     const yOffset = margin.top + i * (rowHeight + rowGap);
     const g = app.chartsSvg.append("g").attr("transform", `translate(${margin.left},${yOffset})`);
+    const innerW = width - margin.left - margin.right;
+
+    g.append("g")
+      .attr("class", "chart-grid")
+      .attr("transform", `translate(0,${rowHeight})`)
+      .call(d3.axisBottom(x).ticks(Math.min(8, app.years.length)).tickSize(-rowHeight).tickFormat(""));
+    g.append("g")
+      .attr("class", "chart-grid")
+      .call(d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(""));
 
     g.append("g").call(d3.axisLeft(y).ticks(4).tickFormat(d3.format(".0%")));
 

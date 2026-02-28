@@ -1,4 +1,6 @@
-﻿:root {
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap");
+
+:root {
   --bg: #f6f7f3;
   --panel-bg: #ffffff;
   --text: #1f2a2e;
@@ -20,9 +22,17 @@
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Manrope", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
   background: linear-gradient(180deg, #eef3ec 0%, #f8f8f5 100%);
+}
+
+button,
+input,
+select,
+textarea,
+svg text {
+  font-family: inherit;
 }
 
 .app {
@@ -173,6 +183,15 @@ svg {
 .axis-label {
   fill: var(--muted);
   font-size: 12px;
+}
+
+.chart-grid line {
+  stroke: #d9e1db;
+  stroke-opacity: 0.45;
+}
+
+.chart-grid path {
+  display: none;
 }
 
 .legend {

@@ -32,8 +32,7 @@ const PRODUCT_COLOR = {
 
 const COUNTRY_NAME_TO_ID = {
   Norway: "NOR",
-  Switzerland: "CHE",
-  "European Union (27)": "EU27"
+  Switzerland: "CHE"
 };
 
 const EUROPE_BOUNDS = { lonMin: -31, lonMax: 45, latMin: 34, latMax: 72 };
@@ -44,7 +43,27 @@ const EXCLUDED_MAP_FEATURE_NAMES = new Set([
   "svalbard",
   "svalbard and jan mayen"
 ]);
-const INDEPENDENT_SELECTABLE_IDS = new Set(["NOR", "CHE"]);
+const COUNTRY_NAME_ALIASES = {
+  "bolivia plurinational state of": "bolivia",
+  "cabo verde": "cape verde",
+  "congo democratic republic of the": "democratic republic of the congo",
+  "congo": "republic of the congo",
+  "cote d ivoire": "ivory coast",
+  "iran islamic republic of": "iran",
+  "korea republic of": "south korea",
+  "korea democratic people s republic of": "north korea",
+  "lao people s democratic republic": "laos",
+  "micronesia federated states of": "micronesia",
+  "moldova republic of": "moldova",
+  "palestine state of": "palestine",
+  "russian federation": "russia",
+  "syrian arab republic": "syria",
+  "tanzania united republic of": "tanzania",
+  "united kingdom of great britain and northern ireland": "united kingdom",
+  "united states of america": "united states",
+  "venezuela bolivarian republic of": "venezuela",
+  "viet nam": "vietnam"
+};
 
 const state = {
   selectedCountryId: null,
@@ -74,14 +93,25 @@ async function init() {
   try {
     const [rows, geometry] = await Promise.all([loadDataset(), loadMapGeometry()]);
 
-    app.rows = rows.filter((d) => d.country_id && d.product);
+    const geometryCountryIndex = buildGeometryCountryIndex(geometry);
+    app.rows = rows
+      .map((d) => {
+        const normalizedCountryName = normalizeCountryName(d.country_name);
+        const mappedId =
+          d.country_id ||
+          geometryCountryIndex.get(normalizedCountryName) ||
+          normalizedCountryName ||
+          null;
+        return { ...d, country_id: mappedId };
+      })
+      .filter((d) => d.country_id && d.product && Number.isFinite(d.year));
     buildIndices();
     initControls();
     initMap(geometry);
     initCharts();
 
-    state.selectedYear = app.latestYear;
-    state.selectedCountryId = app.byCountryYearProduct.EU27 ? "EU27" : null;
+    state.selectedYear = getDefaultSelectedYear();
+    state.selectedCountryId = getDefaultSelectedCountryId();
 
     updateMap();
     updateCharts();
@@ -94,12 +124,13 @@ async function init() {
 }
 
 function parseRow(d) {
-  const country_id = COUNTRY_NAME_TO_ID[d.country] || d.country_id || null;
+  const country_name = (d.country_name || d.country || "").trim();
+  const country_id = d.country_id || COUNTRY_NAME_TO_ID[country_name] || null;
   const product = PRODUCT_MAP[d.product] || d.product || null;
 
   return {
     country_id,
-    country_name: d.country_name || d.country,
+    country_name,
     product,
     year: +d.year,
     self_sufficiency_rate: d.self_sufficiency_rate === "" ? null : +d.self_sufficiency_rate,
@@ -150,6 +181,7 @@ function buildIndices() {
   const years = new Set();
 
   app.rows.forEach((d) => {
+    if (!Number.isFinite(d.year)) return;
     years.add(d.year);
     if (!app.byCountryYearProduct[d.country_id]) app.byCountryYearProduct[d.country_id] = {};
     if (!app.byCountryYearProduct[d.country_id][d.year]) app.byCountryYearProduct[d.country_id][d.year] = {};
@@ -216,26 +248,6 @@ function initMap(features) {
   app.mapG = app.mapSvg.append("g");
 
   app.mapG
-    .append("rect")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("width", safeWidth)
-    .attr("height", safeHeight)
-    .attr("fill", "transparent")
-    .style("pointer-events", "all")
-    .on("mousemove", (event) => {
-      showTooltip(event.clientX, event.clientY, [
-        "<strong>European Union (EU27)</strong>"
-      ]);
-    })
-    .on("mouseleave", hideTooltip)
-    .on("click", () => {
-      state.selectedCountryId = "EU27";
-      updateMap();
-      updateCharts();
-    });
-
-  app.mapG
     .selectAll("path")
     .data(app.mapFeatures)
     .join("path")
@@ -245,14 +257,19 @@ function initMap(features) {
     .style("pointer-events", "all")
     .on("mousemove", (event, d) => {
       const entityId = getSelectableEntityId(d);
-      const label = entityId === "EU27" ? "European Union (EU27)" : app.countryNames[entityId] || entityId;
+      const label = getCountryName(d, entityId);
       showTooltip(event.clientX, event.clientY, [
-        `<strong>${label}</strong>`
+        `<strong>${label}</strong>`,
+        ...(entityId && getValue(entityId, state.selectedYear, state.selectedProducts) != null
+          ? []
+          : ["No data for current filters"])
       ]);
     })
     .on("mouseleave", hideTooltip)
     .on("click", (_, d) => {
-      state.selectedCountryId = getSelectableEntityId(d);
+      const selectedId = getSelectableEntityId(d);
+      if (!selectedId) return;
+      state.selectedCountryId = selectedId;
       updateMap();
       updateCharts();
     });
@@ -261,8 +278,7 @@ function initMap(features) {
 function updateMap() {
   if (!app.mapG) return;
 
-  const euColor = d3.scaleSequential(d3.interpolateYlGn).domain([0, 1]);
-  const nonEuColor = d3.scaleSequential(d3.interpolateBlues).domain([0, 1]);
+  const color = d3.scaleSequential(d3.interpolateYlGn).domain([0, 1]);
 
   app.mapG
     .selectAll(".country")
@@ -272,7 +288,7 @@ function updateMap() {
       const entityId = getSelectableEntityId(d);
       const value = getValue(entityId, state.selectedYear, state.selectedProducts);
       if (value == null) return "#d4d8db";
-      return entityId === "EU27" ? euColor(value) : nonEuColor(value);
+      return color(value);
     })
     .attr("class", (d) => {
       const entityId = getSelectableEntityId(d);
@@ -310,7 +326,7 @@ function updateCharts() {
       .attr("class", "no-data-msg")
       .attr("x", 40)
       .attr("y", 50)
-      .text("Click the European Union (EU27) map");
+      .text("Click a country on the map");
     return;
   }
 
@@ -577,22 +593,80 @@ function getFeatureCountryId(feature) {
   if (iso) return iso;
 
   const p = feature.properties || {};
-  const featureName = (p.ADMIN || p.NAME || p.name || "").trim().toLowerCase();
+  const featureName = normalizeCountryName(p.ADMIN || p.NAME || p.name || "");
   if (!featureName) return null;
 
-  const match = Object.entries(app.countryNames).find(([, name]) => name.toLowerCase() === featureName);
+  const match = Object.entries(app.countryNames).find(
+    ([, name]) => normalizeCountryName(name) === featureName
+  );
   return match ? match[0] : null;
 }
 
 function getCountryName(feature, countryId) {
   const p = feature.properties || {};
-  return app.countryNames[countryId] || p.ADMIN || p.NAME || p.name || countryId;
+  return (
+    app.countryNames[countryId] ||
+    p.ADMIN ||
+    p.NAME ||
+    p.name ||
+    countryId ||
+    "Unknown"
+  );
 }
 
 function getSelectableEntityId(feature) {
-  const id = getFeatureCountryId(feature);
-  if (id && INDEPENDENT_SELECTABLE_IDS.has(id)) return id;
-  return "EU27";
+  return getFeatureCountryId(feature);
+}
+
+function getDefaultSelectedCountryId() {
+  for (const countryId of Object.keys(app.byCountryYearProduct)) {
+    if (app.geoById.has(countryId)) return countryId;
+  }
+  return Object.keys(app.byCountryYearProduct)[0] || null;
+}
+
+function getDefaultSelectedYear() {
+  const yearsDesc = [...app.years].sort((a, b) => b - a);
+  const mapCountryIds = app.mapFeatures
+    .map((f) => getSelectableEntityId(f))
+    .filter(Boolean);
+
+  for (const year of yearsDesc) {
+    const hasData = mapCountryIds.some(
+      (countryId) => getValue(countryId, year, state.selectedProducts) != null
+    );
+    if (hasData) return year;
+  }
+
+  return app.latestYear || app.years[0] || null;
+}
+
+function buildGeometryCountryIndex(features) {
+  const index = new Map();
+  features.forEach((feature) => {
+    const iso = getIso3(feature);
+    if (!iso) return;
+    const p = feature.properties || {};
+    const names = [p.ADMIN, p.NAME, p.name].filter(Boolean);
+    names.forEach((name) => {
+      index.set(normalizeCountryName(name), iso);
+    });
+  });
+  return index;
+}
+
+function normalizeCountryName(name) {
+  if (!name) return "";
+  const normalized = name
+    .toString()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/['’.,()/-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return COUNTRY_NAME_ALIASES[normalized] || normalized;
 }
 
 function showTooltip(x, y, lines) {

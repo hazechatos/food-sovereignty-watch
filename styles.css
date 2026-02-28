@@ -68,6 +68,14 @@ svg text {
   font-size: 0.92rem;
 }
 
+.hero-description {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.45;
+  max-width: 980px;
+}
+
 .hero-icon {
   width: 34px;
   height: 34px;

@@ -253,7 +253,11 @@ function initMap(features) {
   app.mapFeatures = europeFeatures;
 
   // Create color scale used both for the map and its legend.
-  app.mapColorScale = d3.scaleSequential(d3.interpolateYlGn).domain(MAP_COLOR_DOMAIN);
+  // Values above 100% are clamped to the maximum color.
+  app.mapColorScale = d3
+    .scaleSequential(d3.interpolateYlGn)
+    .domain(MAP_COLOR_DOMAIN)
+    .clamp(true);
 
   app.mapSvg = d3
     .select("#map-container")
@@ -382,7 +386,7 @@ function renderMapLegend() {
     .attr("y", legendHeight + 12)
     .attr("text-anchor", "end")
     .attr("font-size", 10)
-    .text("100%");
+    .text("≥100%");
 
   legendGroup
     .append("text")

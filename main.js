@@ -43,6 +43,7 @@ const EXCLUDED_MAP_FEATURE_NAMES = new Set([
   "svalbard",
   "svalbard and jan mayen"
 ]);
+const MAP_COLOR_DOMAIN = [0, 1];
 const COUNTRY_NAME_ALIASES = {
   "bolivia plurinational state of": "bolivia",
   "cabo verde": "cape verde",
@@ -82,7 +83,8 @@ const app = {
   mapPath: null,
   mapG: null,
   chartsSvg: null,
-  geoById: new Map()
+  geoById: new Map(),
+  mapColorScale: null
 };
 
 const tooltip = d3.select("#tooltip");
@@ -250,6 +252,9 @@ function initMap(features) {
   }
   app.mapFeatures = europeFeatures;
 
+  // Create color scale used both for the map and its legend.
+  app.mapColorScale = d3.scaleSequential(d3.interpolateYlGn).domain(MAP_COLOR_DOMAIN);
+
   app.mapSvg = d3
     .select("#map-container")
     .append("svg")
@@ -263,6 +268,8 @@ function initMap(features) {
 
   app.mapPath = d3.geoPath().projection(projection);
   app.mapG = app.mapSvg.append("g");
+
+  renderMapLegend();
 
   app.mapG
     .selectAll("path")
@@ -292,7 +299,7 @@ function initMap(features) {
 function updateMap() {
   if (!app.mapG) return;
 
-  const color = d3.scaleSequential(d3.interpolateYlGn).domain([0, 1]);
+  const color = app.mapColorScale || d3.scaleSequential(d3.interpolateYlGn).domain(MAP_COLOR_DOMAIN);
 
   app.mapG
     .selectAll(".country")
@@ -309,6 +316,81 @@ function updateMap() {
       return `country${entityId === state.selectedCountryId ? " selected" : ""}`;
     });
 
+}
+
+function renderMapLegend() {
+  if (!app.mapSvg || !app.mapColorScale) return;
+
+  const legendWidth = 140;
+  const legendHeight = 10;
+  const legendOffsetX = 16;
+  const legendOffsetY = 16;
+
+  const defs = app.mapSvg.append("defs");
+  const gradientId = "map-legend-gradient";
+  const gradient = defs
+    .append("linearGradient")
+    .attr("id", gradientId)
+    .attr("x1", "0%")
+    .attr("x2", "100%")
+    .attr("y1", "0%")
+    .attr("y2", "0%");
+
+  const steps = 10;
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    gradient
+      .append("stop")
+      .attr("offset", `${t * 100}%`)
+      .attr("stop-color", app.mapColorScale(t));
+  }
+
+  const legendGroup = app.mapSvg
+    .append("g")
+    .attr("class", "map-legend")
+    .attr("transform", `translate(${legendOffsetX},${legendOffsetY})`);
+
+  legendGroup
+    .append("rect")
+    .attr("width", legendWidth)
+    .attr("height", legendHeight)
+    .attr("fill", `url(#${gradientId})`)
+    .attr("stroke", "#777")
+    .attr("stroke-width", 0.7)
+    .attr("rx", 2)
+    .attr("ry", 2);
+
+  legendGroup
+    .append("text")
+    .attr("x", 0)
+    .attr("y", legendHeight + 12)
+    .attr("text-anchor", "start")
+    .attr("font-size", 10)
+    .text("0%");
+
+  legendGroup
+    .append("text")
+    .attr("x", legendWidth / 2)
+    .attr("y", legendHeight + 12)
+    .attr("text-anchor", "middle")
+    .attr("font-size", 10)
+    .text("50%");
+
+  legendGroup
+    .append("text")
+    .attr("x", legendWidth)
+    .attr("y", legendHeight + 12)
+    .attr("text-anchor", "end")
+    .attr("font-size", 10)
+    .text("100%");
+
+  legendGroup
+    .append("text")
+    .attr("x", 0)
+    .attr("y", -4)
+    .attr("font-size", 11)
+    .attr("font-weight", "600")
+    .text("Self-sufficiency");
 }
 
 function initCharts() {

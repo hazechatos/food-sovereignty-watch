@@ -43,6 +43,7 @@ const EXCLUDED_MAP_FEATURE_NAMES = new Set([
   "svalbard",
   "svalbard and jan mayen"
 ]);
+const MAP_COLOR_DOMAIN = [0, 1];
 const COUNTRY_NAME_ALIASES = {
   "bolivia plurinational state of": "bolivia",
   "cabo verde": "cape verde",
@@ -68,7 +69,7 @@ const COUNTRY_NAME_ALIASES = {
 const state = {
   selectedCountryId: null,
   selectedYear: null,
-  selectedProducts: ["volaille", "ble", "lait"]
+  selectedProduct: "volaille"
 };
 
 const app = {
@@ -82,7 +83,8 @@ const app = {
   mapPath: null,
   mapG: null,
   chartsSvg: null,
-  geoById: new Map()
+  geoById: new Map(),
+  mapColorScale: null
 };
 
 const tooltip = d3.select("#tooltip");
@@ -196,19 +198,8 @@ function buildIndices() {
 }
 
 function initControls() {
-  d3.selectAll('input[name="product"]').on("change", () => {
-    const selected = d3
-      .selectAll('input[name="product"]:checked')
-      .nodes()
-      .map((n) => n.value);
-
-    state.selectedProducts = selected.length ? selected : ["volaille", "ble", "lait"];
-
-    if (!selected.length) {
-      d3.select('input[name="product"][value="volaille"]').property("checked", true);
-      state.selectedProducts = ["volaille"];
-    }
-
+  d3.selectAll('input[name="product"]').on("change", (event) => {
+    state.selectedProduct = event.target.value;
     updateMap();
     updateCharts();
   });
@@ -250,6 +241,13 @@ function initMap(features) {
   }
   app.mapFeatures = europeFeatures;
 
+  // Create color scale used both for the map and its legend.
+  // Values above 100% are clamped to the maximum color.
+  app.mapColorScale = d3
+    .scaleSequential(d3.interpolateYlGn)
+    .domain(MAP_COLOR_DOMAIN)
+    .clamp(true);
+
   app.mapSvg = d3
     .select("#map-container")
     .append("svg")
@@ -263,6 +261,8 @@ function initMap(features) {
 
   app.mapPath = d3.geoPath().projection(projection);
   app.mapG = app.mapSvg.append("g");
+
+  renderMapLegend();
 
   app.mapG
     .selectAll("path")
@@ -292,7 +292,7 @@ function initMap(features) {
 function updateMap() {
   if (!app.mapG) return;
 
-  const color = d3.scaleSequential(d3.interpolateYlGn).domain([0, 1]);
+  const color = app.mapColorScale || d3.scaleSequential(d3.interpolateYlGn).domain(MAP_COLOR_DOMAIN);
 
   app.mapG
     .selectAll(".country")
@@ -300,7 +300,7 @@ function updateMap() {
     .duration(400)
     .attr("fill", (d) => {
       const entityId = getSelectableEntityId(d);
-      const value = getValue(entityId, state.selectedYear, state.selectedProducts);
+      const value = getValue(entityId, state.selectedYear, state.selectedProduct);
       if (value == null) return "#d4d8db";
       return color(value);
     })
@@ -309,6 +309,81 @@ function updateMap() {
       return `country${entityId === state.selectedCountryId ? " selected" : ""}`;
     });
 
+}
+
+function renderMapLegend() {
+  if (!app.mapSvg || !app.mapColorScale) return;
+
+  const legendWidth = 140;
+  const legendHeight = 10;
+  const legendOffsetX = 16;
+  const legendOffsetY = 16;
+
+  const defs = app.mapSvg.append("defs");
+  const gradientId = "map-legend-gradient";
+  const gradient = defs
+    .append("linearGradient")
+    .attr("id", gradientId)
+    .attr("x1", "0%")
+    .attr("x2", "100%")
+    .attr("y1", "0%")
+    .attr("y2", "0%");
+
+  const steps = 10;
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    gradient
+      .append("stop")
+      .attr("offset", `${t * 100}%`)
+      .attr("stop-color", app.mapColorScale(t));
+  }
+
+  const legendGroup = app.mapSvg
+    .append("g")
+    .attr("class", "map-legend")
+    .attr("transform", `translate(${legendOffsetX},${legendOffsetY})`);
+
+  legendGroup
+    .append("rect")
+    .attr("width", legendWidth)
+    .attr("height", legendHeight)
+    .attr("fill", `url(#${gradientId})`)
+    .attr("stroke", "#777")
+    .attr("stroke-width", 0.7)
+    .attr("rx", 2)
+    .attr("ry", 2);
+
+  legendGroup
+    .append("text")
+    .attr("x", 0)
+    .attr("y", legendHeight + 12)
+    .attr("text-anchor", "start")
+    .attr("font-size", 10)
+    .text("0%");
+
+  legendGroup
+    .append("text")
+    .attr("x", legendWidth / 2)
+    .attr("y", legendHeight + 12)
+    .attr("text-anchor", "middle")
+    .attr("font-size", 10)
+    .text("50%");
+
+  legendGroup
+    .append("text")
+    .attr("x", legendWidth)
+    .attr("y", legendHeight + 12)
+    .attr("text-anchor", "end")
+    .attr("font-size", 10)
+    .text("≥100%");
+
+  legendGroup
+    .append("text")
+    .attr("x", 0)
+    .attr("y", -4)
+    .attr("font-size", 11)
+    .attr("font-weight", "600")
+    .text("Self-sufficiency");
 }
 
 function initCharts() {
@@ -346,9 +421,9 @@ function updateCharts() {
 
   title.text(`Self-sufficiency - ${app.countryNames[selectedId] || selectedId}`);
 
-  const seriesByProduct = getSeriesForCountry(selectedId, state.selectedProducts);
+  const series = getSeriesForCountry(selectedId, state.selectedProduct);
 
-  if (!seriesByProduct.length || seriesByProduct.every((s) => !s.values.length)) {
+  if (!series.values.length) {
     legend.selectAll("*").remove();
     app.chartsSvg
       .append("text")
@@ -359,11 +434,11 @@ function updateCharts() {
     return;
   }
 
-  renderLegend(state.selectedProducts);
-  drawSmallMultiples(seriesByProduct);
+  renderLegend(state.selectedProduct);
+  drawSingleChart(series);
 }
 
-function drawSingleChart(seriesByProduct) {
+function drawSingleChart(series) {
   const width = 920;
   const height = 600;
   const margin = { top: 20, right: 24, bottom: 50, left: 52 };
@@ -375,7 +450,8 @@ function drawSingleChart(seriesByProduct) {
   const g = app.chartsSvg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
   const x = d3.scaleLinear().domain(d3.extent(app.years)).range([0, innerW]);
-  const y = d3.scaleLinear().domain([0, 1]).range([innerH, 0]);
+  const yMax = Math.max(1, d3.max(series.values, (d) => d.value));
+  const y = d3.scaleLinear().domain([0, yMax]).range([innerH, 0]).nice();
 
   g.append("g")
     .attr("class", "chart-grid")
@@ -403,30 +479,39 @@ function drawSingleChart(seriesByProduct) {
     .attr("text-anchor", "middle")
     .text("Self-sufficiency rate");
 
+  g.append("line")
+    .attr("x1", 0)
+    .attr("x2", innerW)
+    .attr("y1", y(1))
+    .attr("y2", y(1))
+    .attr("stroke", "#888")
+    .attr("stroke-width", 1)
+    .attr("stroke-dasharray", "4 3");
+
+  g.append("text")
+    .attr("x", innerW + 4)
+    .attr("y", y(1))
+    .attr("dy", "0.35em")
+    .attr("font-size", 10)
+    .attr("fill", "#888")
+    .text("100%");
+
   const line = d3
     .line()
     .x((d) => x(d.year))
     .y((d) => y(d.value));
 
-  const lines = g.selectAll(".line-series").data(seriesByProduct, (d) => d.product);
-
-  lines
-    .join((enter) =>
-      enter
-        .append("path")
-        .attr("class", "line-series")
-        .attr("fill", "none")
-        .attr("stroke-width", 2.2)
-        .attr("stroke", (d) => PRODUCT_COLOR[d.product])
-        .attr("d", (d) => line(d.values))
-        .attr("opacity", 0)
-        .call((e) => e.transition().duration(450).attr("opacity", 1))
-    )
+  g.append("path")
+    .datum(series.values)
+    .attr("class", "line-series")
+    .attr("fill", "none")
+    .attr("stroke-width", 2.2)
+    .attr("stroke", PRODUCT_COLOR[series.product])
+    .attr("d", line)
+    .attr("opacity", 0)
     .transition()
     .duration(450)
-    .attr("stroke", (d) => PRODUCT_COLOR[d.product])
-    .attr("d", (d) => line(d.values));
-
+    .attr("opacity", 1);
 }
 
 function drawSmallMultiples(seriesByProduct) {
@@ -507,38 +592,30 @@ function drawSmallMultiples(seriesByProduct) {
     .text("Self-sufficiency rate");
 }
 
-function getValue(countryId, year, selectedProducts) {
-  if (!countryId || !year || !selectedProducts.length) return null;
+function getValue(countryId, year, product) {
+  if (!countryId || !year || !product) return null;
 
-  const products = app.byCountryYearProduct[countryId]?.[year];
-  if (!products) return null;
+  const value = app.byCountryYearProduct[countryId]?.[year]?.[product];
+  if (value == null || !Number.isFinite(value)) return null;
 
-  const values = selectedProducts
-    .map((p) => products[p])
-    .filter((v) => v != null && Number.isFinite(v));
-
-  if (!values.length) return null;
-
-  return d3.mean(values);
+  return value;
 }
 
-function getSeriesForCountry(countryId, selectedProducts) {
-  return selectedProducts.map((product) => {
-    const values = app.years
-      .map((year) => ({
-        year,
-        value: app.byCountryYearProduct[countryId]?.[year]?.[product]
-      }))
-      .filter((d) => d.value != null);
+function getSeriesForCountry(countryId, product) {
+  const values = app.years
+    .map((year) => ({
+      year,
+      value: app.byCountryYearProduct[countryId]?.[year]?.[product]
+    }))
+    .filter((d) => d.value != null);
 
-    return { product, values };
-  });
+  return { product, values };
 }
 
-function renderLegend(products) {
+function renderLegend(product) {
   d3.select("#chart-legend")
     .selectAll(".legend-item")
-    .data(products)
+    .data([product])
     .join("div")
     .attr("class", "legend-item")
     .html(
@@ -649,7 +726,7 @@ function getCountryTooltipLines(feature) {
   const entityId = getSelectableEntityId(feature);
   const label = getCountryName(feature, entityId);
   const lines = [`<strong>${label}</strong>`];
-  const value = entityId ? getValue(entityId, state.selectedYear, state.selectedProducts) : null;
+  const value = entityId ? getValue(entityId, state.selectedYear, state.selectedProduct) : null;
   lines.push(value == null ? "No data for current filters" : `Self-sufficiency: ${d3.format(".1%")(value)}`);
   return lines;
 }
@@ -673,7 +750,7 @@ function getDefaultSelectedYear() {
 
   for (const year of yearsDesc) {
     const hasData = mapCountryIds.some(
-      (countryId) => getValue(countryId, year, state.selectedProducts) != null
+      (countryId) => getValue(countryId, year, state.selectedProduct) != null
     );
     if (hasData) return year;
   }

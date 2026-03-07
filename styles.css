@@ -82,28 +82,52 @@ svg text {
   flex: 0 0 34px;
 }
 
-.controls-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
-  background: var(--panel-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 12px;
-}
-
-.control-group {
+.product-selector {
   display: flex;
   gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.control-label {
-  font-size: 0.85rem;
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 0;
+  max-width: 280px;
+  background: var(--panel-bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.product-card.selected {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card--volaille.selected { border-color: var(--line-volaille); background: #cc5a240a; }
+.product-card--ble.selected { border-color: var(--line-ble); background: #7a8f2a0a; }
+.product-card--lait.selected { border-color: var(--line-lait); background: #2b6cb00a; }
+
+.product-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.product-card--volaille .product-card-name { color: var(--line-volaille); }
+.product-card--ble .product-card-name { color: var(--line-ble); }
+.product-card--lait .product-card-name { color: var(--line-lait); }
+
+.product-card-desc {
+  font-size: 0.78rem;
   color: var(--muted);
-  font-weight: 600;
+  line-height: 1.35;
 }
 
 .main-layout {
@@ -264,6 +288,11 @@ svg {
 }
 
 @media (max-width: 980px) {
+  .product-selector {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .main-layout {
     grid-template-columns: 1fr;
     grid-template-rows: 42vh auto;

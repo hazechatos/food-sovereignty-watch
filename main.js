@@ -198,8 +198,12 @@ function buildIndices() {
 }
 
 function initControls() {
-  d3.selectAll('input[name="product"]').on("change", (event) => {
-    state.selectedProduct = event.target.value;
+  d3.selectAll(".product-card").on("click", function () {
+    const product = this.dataset.product;
+    if (!product) return;
+    state.selectedProduct = product;
+    d3.selectAll(".product-card").classed("selected", false);
+    d3.select(this).classed("selected", true);
     updateMap();
     updateCharts();
   });

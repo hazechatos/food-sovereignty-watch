@@ -30,15 +30,20 @@
         </p>
       </header>
 
-      <header class="controls-bar">
-        <div class="control-group">
-          <span class="control-label">Products</span>
-          <label><input type="radio" name="product" value="volaille" checked /> Poultry</label>
-          <label><input type="radio" name="product" value="ble" /> Wheat</label>
-          <label><input type="radio" name="product" value="lait" /> Milk</label>
+      <div class="product-selector">
+        <div class="product-card product-card--volaille selected" data-product="volaille">
+          <span class="product-card-name">Poultry</span>
+          <span class="product-card-desc">Chicken meat, fresh or chilled — a key protein source across Europe.</span>
         </div>
-
-      </header>
+        <div class="product-card product-card--ble" data-product="ble">
+          <span class="product-card-name">Wheat</span>
+          <span class="product-card-desc">The staple cereal grain — central to bread, pasta and food security.</span>
+        </div>
+        <div class="product-card product-card--lait" data-product="lait">
+          <span class="product-card-name">Milk</span>
+          <span class="product-card-desc">Raw cattle milk — a cornerstone of the European dairy industry.</span>
+        </div>
+      </div>
 
       <main class="main-layout">
         <section class="panel panel-map">

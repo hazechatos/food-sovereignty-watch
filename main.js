@@ -479,6 +479,23 @@ function drawSingleChart(series) {
     .attr("text-anchor", "middle")
     .text("Self-sufficiency rate");
 
+  g.append("line")
+    .attr("x1", 0)
+    .attr("x2", innerW)
+    .attr("y1", y(1))
+    .attr("y2", y(1))
+    .attr("stroke", "#888")
+    .attr("stroke-width", 1)
+    .attr("stroke-dasharray", "4 3");
+
+  g.append("text")
+    .attr("x", innerW + 4)
+    .attr("y", y(1))
+    .attr("dy", "0.35em")
+    .attr("font-size", 10)
+    .attr("fill", "#888")
+    .text("100%");
+
   const line = d3
     .line()
     .x((d) => x(d.year))

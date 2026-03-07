@@ -69,7 +69,7 @@ const COUNTRY_NAME_ALIASES = {
 const state = {
   selectedCountryId: null,
   selectedYear: null,
-  selectedProducts: ["volaille", "ble", "lait"]
+  selectedProduct: "volaille"
 };
 
 const app = {
@@ -198,19 +198,8 @@ function buildIndices() {
 }
 
 function initControls() {
-  d3.selectAll('input[name="product"]').on("change", () => {
-    const selected = d3
-      .selectAll('input[name="product"]:checked')
-      .nodes()
-      .map((n) => n.value);
-
-    state.selectedProducts = selected.length ? selected : ["volaille", "ble", "lait"];
-
-    if (!selected.length) {
-      d3.select('input[name="product"][value="volaille"]').property("checked", true);
-      state.selectedProducts = ["volaille"];
-    }
-
+  d3.selectAll('input[name="product"]').on("change", (event) => {
+    state.selectedProduct = event.target.value;
     updateMap();
     updateCharts();
   });
@@ -311,7 +300,7 @@ function updateMap() {
     .duration(400)
     .attr("fill", (d) => {
       const entityId = getSelectableEntityId(d);
-      const value = getValue(entityId, state.selectedYear, state.selectedProducts);
+      const value = getValue(entityId, state.selectedYear, state.selectedProduct);
       if (value == null) return "#d4d8db";
       return color(value);
     })
@@ -432,9 +421,9 @@ function updateCharts() {
 
   title.text(`Self-sufficiency - ${app.countryNames[selectedId] || selectedId}`);
 
-  const seriesByProduct = getSeriesForCountry(selectedId, state.selectedProducts);
+  const series = getSeriesForCountry(selectedId, state.selectedProduct);
 
-  if (!seriesByProduct.length || seriesByProduct.every((s) => !s.values.length)) {
+  if (!series.values.length) {
     legend.selectAll("*").remove();
     app.chartsSvg
       .append("text")
@@ -445,11 +434,11 @@ function updateCharts() {
     return;
   }
 
-  renderLegend(state.selectedProducts);
-  drawSmallMultiples(seriesByProduct);
+  renderLegend(state.selectedProduct);
+  drawSingleChart(series);
 }
 
-function drawSingleChart(seriesByProduct) {
+function drawSingleChart(series) {
   const width = 920;
   const height = 600;
   const margin = { top: 20, right: 24, bottom: 50, left: 52 };
@@ -494,25 +483,17 @@ function drawSingleChart(seriesByProduct) {
     .x((d) => x(d.year))
     .y((d) => y(d.value));
 
-  const lines = g.selectAll(".line-series").data(seriesByProduct, (d) => d.product);
-
-  lines
-    .join((enter) =>
-      enter
-        .append("path")
-        .attr("class", "line-series")
-        .attr("fill", "none")
-        .attr("stroke-width", 2.2)
-        .attr("stroke", (d) => PRODUCT_COLOR[d.product])
-        .attr("d", (d) => line(d.values))
-        .attr("opacity", 0)
-        .call((e) => e.transition().duration(450).attr("opacity", 1))
-    )
+  g.append("path")
+    .datum(series.values)
+    .attr("class", "line-series")
+    .attr("fill", "none")
+    .attr("stroke-width", 2.2)
+    .attr("stroke", PRODUCT_COLOR[series.product])
+    .attr("d", line)
+    .attr("opacity", 0)
     .transition()
     .duration(450)
-    .attr("stroke", (d) => PRODUCT_COLOR[d.product])
-    .attr("d", (d) => line(d.values));
-
+    .attr("opacity", 1);
 }
 
 function drawSmallMultiples(seriesByProduct) {
@@ -593,38 +574,30 @@ function drawSmallMultiples(seriesByProduct) {
     .text("Self-sufficiency rate");
 }
 
-function getValue(countryId, year, selectedProducts) {
-  if (!countryId || !year || !selectedProducts.length) return null;
+function getValue(countryId, year, product) {
+  if (!countryId || !year || !product) return null;
 
-  const products = app.byCountryYearProduct[countryId]?.[year];
-  if (!products) return null;
+  const value = app.byCountryYearProduct[countryId]?.[year]?.[product];
+  if (value == null || !Number.isFinite(value)) return null;
 
-  const values = selectedProducts
-    .map((p) => products[p])
-    .filter((v) => v != null && Number.isFinite(v));
-
-  if (!values.length) return null;
-
-  return d3.mean(values);
+  return value;
 }
 
-function getSeriesForCountry(countryId, selectedProducts) {
-  return selectedProducts.map((product) => {
-    const values = app.years
-      .map((year) => ({
-        year,
-        value: app.byCountryYearProduct[countryId]?.[year]?.[product]
-      }))
-      .filter((d) => d.value != null);
+function getSeriesForCountry(countryId, product) {
+  const values = app.years
+    .map((year) => ({
+      year,
+      value: app.byCountryYearProduct[countryId]?.[year]?.[product]
+    }))
+    .filter((d) => d.value != null);
 
-    return { product, values };
-  });
+  return { product, values };
 }
 
-function renderLegend(products) {
+function renderLegend(product) {
   d3.select("#chart-legend")
     .selectAll(".legend-item")
-    .data(products)
+    .data([product])
     .join("div")
     .attr("class", "legend-item")
     .html(
@@ -735,7 +708,7 @@ function getCountryTooltipLines(feature) {
   const entityId = getSelectableEntityId(feature);
   const label = getCountryName(feature, entityId);
   const lines = [`<strong>${label}</strong>`];
-  const value = entityId ? getValue(entityId, state.selectedYear, state.selectedProducts) : null;
+  const value = entityId ? getValue(entityId, state.selectedYear, state.selectedProduct) : null;
   lines.push(value == null ? "No data for current filters" : `Self-sufficiency: ${d3.format(".1%")(value)}`);
   return lines;
 }
@@ -759,7 +732,7 @@ function getDefaultSelectedYear() {
 
   for (const year of yearsDesc) {
     const hasData = mapCountryIds.some(
-      (countryId) => getValue(countryId, year, state.selectedProducts) != null
+      (countryId) => getValue(countryId, year, state.selectedProduct) != null
     );
     if (hasData) return year;
   }

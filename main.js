@@ -450,7 +450,8 @@ function drawSingleChart(series) {
   const g = app.chartsSvg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
   const x = d3.scaleLinear().domain(d3.extent(app.years)).range([0, innerW]);
-  const y = d3.scaleLinear().domain([0, 1]).range([innerH, 0]);
+  const yMax = Math.max(1, d3.max(series.values, (d) => d.value));
+  const y = d3.scaleLinear().domain([0, yMax]).range([innerH, 0]).nice();
 
   g.append("g")
     .attr("class", "chart-grid")
